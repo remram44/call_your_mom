@@ -1,0 +1,14 @@
+{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block page_title %}Call Your Mom{% endblock %}</title>
+</head>
+<body>
+  {% block content %}{% endblock %}
+
+  <footer style="color:silver; font-size: 80%;">{% with project_url="https://github.com/remram44/call_your_mom" %}{% blocktrans %}Call Your Mom sources available on <a href="{{ project_url }}">github.com</a>{% endblocktrans %}{% endwith %}</footer>
+</body>
+</html>
