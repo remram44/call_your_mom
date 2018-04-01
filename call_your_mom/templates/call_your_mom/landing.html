@@ -3,6 +3,39 @@
 {% load i18n %}
 
 {% block content %}
-  <h1>{% trans "Welcome!" %}</h1>
-  <p>Project description will be here.</p>
+  {% blocktrans %}
+  <h1>Welcome!</h1>
+  <p>This is a web application meant to remind you to do some periodic tasks.</p>
+
+  <h2>What?</h2>
+  <p>After signing up with your email, you can set tasks that should be done every N days, and the system will remind you when it is time. You can set any task name, description, and interval. By clicking the link in the email, you can set the next time it should be done.</p>
+
+  <h2>What can I use this for?</h2>
+
+  <p>There are two types of tasks:</p>
+  <ul>
+    <li>The ones that should not be forgotten too long (like calling your mom. If you call her before being reminded, or she calls you, good for you. The reminder will start counting down from that date, so the reminder date changes).
+    <br/>Examples:
+      <ul>
+        <li><a href="https://www.duplicati.com/">Backup your computer</a> and phone</li>
+        <li>Clean the floors</li>
+        <li>Write a blog post</li>
+        <li>Date night</li>
+        <li>Schedule a meeting for your project</li>
+        <li>Call your mom!</li>
+      </ul>
+    </li>
+    <li>The ones that need to happen on a specific day exactly (like things you only do on weekends, or on Wednesdays, or the first day of the month). No matter when you acknowledge the reminder, the system will keep to the initial schedule.
+    <br/>Examples:
+      <ul>
+        <li>Team meeting</li>
+        <li>Play the <a href="http://nuclearthrone.com/">Nuclear Throne</a> weeklies</li>
+      </ul>
+    </li>
+  </ul>
+  {% endblocktrans %}
+
+  <h2>{% trans "Where do I sign up?" %}</h2>
+  <form action="/register"><p>Just enter your email, and click the link we'll send you to start adding tasks: <input name="email" type="email"/> <input type="submit" value="Go"/></p></form>
+
 {% endblock %}

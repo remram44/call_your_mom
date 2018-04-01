@@ -1,0 +1,33 @@
+{% extends "call_your_mom/base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+  {% blocktrans %}
+  <h1>Settings for <em>{{ user.email }}</em></h1>
+  <p>Those are the tasks you have set up:</p>
+  {% endblocktrans %}
+
+  <table>
+    <tr>
+      <th>{% trans "Name" %}</th>
+      <th>{% trans "Type" %}</th>
+      <th>{% trans "Created" %}</th>
+      <th>{% trans "Due" %}</th>
+      <td></td>
+    </tr>
+    {% for task in user.tasks %}
+    <tr>
+      <td>{{ task.name }}</td>
+      <td>{{ task.type }}</td>
+      <td>{{ task.created }}</td>
+      <td>{{ task.due }}</td>
+      <td>
+        <a href="/task">{% trans "edit" %}</a>
+        <a href="/task_delete">{% trans "delete" %}</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+
+{% endblock %}

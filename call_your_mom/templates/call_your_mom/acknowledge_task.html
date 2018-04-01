@@ -1,0 +1,17 @@
+{% extends "call_your_mom/base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+
+  {% blocktrans %}
+  <h1>Task done: {{ task.name }}</h1>
+
+  <form action="/change_task">
+    <p>Done on: <input type="date" name="done" value="{{ today }}"/></p>
+    <p>Due: <input type="date" name="due" value="{{ task_due }}"/></p>
+    <p><input type="submit" value="Save"/></p>
+  </form>
+  {% endblocktrans %}
+
+{% endblock %}
