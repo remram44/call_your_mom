@@ -23,8 +23,8 @@
       <td>{{ task.created }}</td>
       <td>{{ task.due }}</td>
       <td>
-        <a href="/task">{% trans "edit" %}</a>
-        <a href="/task_delete">{% trans "delete" %}</a>
+        <a href="{% url 'change_task' task.id %}">{% trans "edit" %}</a>
+        <a href="{% url 'delete_task' task.id %}">{% trans "delete" %}</a>
       </td>
     </tr>
     {% endfor %}

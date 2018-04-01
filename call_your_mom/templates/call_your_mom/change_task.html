@@ -7,7 +7,7 @@
   {% blocktrans %}
   <h1>Edit task: {{ task.name }}</h1>
 
-  <form action="/change_task">
+  <form action="{% url 'change_task' %}">
     <p>Name: <input type="text" name="name" value="{{ task.name }}"/></p>
     <p>Description: <textarea name="description"></textarea></p>
     <p>Due: <input type="date" name="due" value="{{ task.due }}"/></p>

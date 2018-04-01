@@ -35,6 +35,12 @@ def change_task(request, task_id):
     return render(request, 'call_your_mom/change_task.html')
 
 
+def delete_task(request, task_id):
+    """Delete a task.
+    """
+    return redirect('index', permanent=False)
+
+
 def ack_task(request, task_id):
     """Acknowledge a task, from a reminder.
 
