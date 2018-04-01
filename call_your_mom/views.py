@@ -1,4 +1,5 @@
 from django.shortcuts import redirect, render
+from django.utils import translation
 
 
 def index(request):
@@ -41,3 +42,11 @@ def ack_task(request, task_id):
     when the task was done, and when it is due next.
     """
     return render(request, 'call_your_mom/acknowledge_task.html')
+
+
+def set_lang(request, lang):
+    """Change the language.
+    """
+    translation.activate(lang)
+    request.session[translation.LANGUAGE_SESSION_KEY] = lang
+    return redirect('index', permanent=False)

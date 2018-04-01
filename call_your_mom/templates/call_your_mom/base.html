@@ -7,6 +7,20 @@
 <body>
   {% block content %}{% endblock %}
 
-  <footer style="color:silver; font-size: 80%;">{% with project_url="https://github.com/remram44/call_your_mom" %}{% blocktrans %}Call Your Mom sources available on <a href="{{ project_url }}">github.com</a>{% endblocktrans %}{% endwith %}</footer>
+  <footer style="color:silver; font-size: 80%;">{% with project_url="https://github.com/remram44/call_your_mom" %}{% blocktrans %}Call Your Mom sources available on <a href="{{ project_url }}">github.com</a>{% endblocktrans %}{% endwith %}<br/>
+
+  {% get_current_language as LANGUAGE_CODE %}
+  {% get_available_languages as LANGUAGES %}
+  {% get_language_info_list for LANGUAGES as languages %}
+  {% for language in languages %}
+    {% if language.code == LANGUAGE_CODE %}
+      {{ language.name_local }}
+    {% else %}
+      <a href="{% url 'set_lang' language.code %}">
+          {{ language.name_local }}
+      </a>
+    {% endif %}
+  {% endfor %}
+  </footer>
 </body>
 </html>

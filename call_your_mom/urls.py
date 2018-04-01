@@ -8,4 +8,5 @@ urlpatterns = [
     path('profile', views.profile, name='profile'),
     path('task/<int:task_id>', views.change_task, name='change_task'),
     path('ack/<int:task_id>', views.ack_task, name='ack_task'),
+    path('set_lang/<str:lang>', views.set_lang, name='set_lang'),
 ]

@@ -36,6 +36,6 @@
   {% endblocktrans %}
 
   <h2>{% trans "Where do I sign up?" %}</h2>
-  <form action="/register"><p>Just enter your email, and click the link we'll send you to start adding tasks: <input name="email" type="email"/> <input type="submit" value="Go"/></p></form>
+  <form action="/register"><p>{% blocktrans %}Just enter your email, and click the link we'll send you to start adding tasks:{% endblocktrans %} <input name="email" type="email"/> <input type="submit" value="{% trans "Go" context "Submit button for email registration" %}"/></p></form>
 
 {% endblock %}
