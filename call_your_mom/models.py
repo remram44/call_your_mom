@@ -4,6 +4,9 @@ from model_utils import Choices
 
 
 class CYMUser(models.Model):
+    class Meta:
+        verbose_name = "User"
+
     email = models.CharField(max_length=200, primary_key=True)
     last_login = models.DateTimeField()
     last_email = models.DateTimeField()
