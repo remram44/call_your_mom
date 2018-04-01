@@ -37,6 +37,10 @@ class TokenAuthMiddleware(MiddlewareMixin):
             request.cym_user = None
 
 
+def clear_login(request):
+    request.session.pop(CYMUser.USER_ID_KEY, None)
+
+
 def needs_login(wrapped):
     @functools.wraps(wrapped)
     def wrapper(request, *args, **kwargs):

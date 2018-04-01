@@ -8,6 +8,8 @@
   <h1>{% blocktrans %}Settings for <em>{{ email }}</em>{% endblocktrans %}</h1>
   {% endwith %}
 
+  <p><a href="{% url 'logout' %}">Click here to log out</a></p>
+
   <p>{% blocktrans %}Those are the tasks you have set up:{% endblocktrans %}</p>
 
   <table>

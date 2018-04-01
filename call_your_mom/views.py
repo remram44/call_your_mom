@@ -5,7 +5,8 @@ from django.shortcuts import redirect, render
 from django.utils import translation
 from django.utils.translation import gettext as _
 
-from .auth import needs_login, send_login_email, send_register_email
+from .auth import needs_login, send_login_email, send_register_email, \
+    clear_login
 from .models import CYMUser
 
 
@@ -94,6 +95,15 @@ def login(request):
         return redirect('confirm')
     else:
         return render(request, 'call_your_mom/login.html')
+
+
+def logout(request):
+    """Log out the current user.
+    """
+    clear_login(request)
+    messages.add_message(request, messages.INFO,
+                         _("You have been logged out."))
+    return redirect('confirm')
 
 
 def confirm(request):
