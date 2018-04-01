@@ -7,7 +7,8 @@ class CYMUser(models.Model):
     class Meta:
         verbose_name = "User"
 
-    email = models.CharField(max_length=200, primary_key=True)
+    email = models.CharField(max_length=200, db_index=True)
+    created = models.DateTimeField()
     last_login = models.DateTimeField()
     last_email = models.DateTimeField()
 
