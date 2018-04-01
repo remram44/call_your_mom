@@ -1,15 +1,17 @@
+import datetime
 from django.shortcuts import redirect, render
 from django.utils import translation
 
-
-# TODO: Authenticate user from emailed token
+from .auth import needs_login
 
 
 def index(request):
     """Website index, redirects either to landing page or profile.
     """
-    # TODO: Redirect to 'profile' if logged in, 'landing' otherwise
-    return redirect('landing', permanent=False)
+    if request.cym_user is not None:
+        return redirect('profile', permanent=False)
+    else:
+        return redirect('landing', permanent=False)
 
 
 def landing(request):
@@ -25,6 +27,7 @@ def register(request):
     return render(request, 'call_your_mom/register.html')
 
 
+@needs_login
 def profile(request):
     """A user's profile, listing all his tasks.
     """
@@ -32,6 +35,7 @@ def profile(request):
     return render(request, 'call_your_mom/profile.html')
 
 
+@needs_login
 def change_task(request, task_id):
     """Creation or modification of a task.
 
@@ -42,6 +46,7 @@ def change_task(request, task_id):
     return render(request, 'call_your_mom/change_task.html')
 
 
+@needs_login
 def delete_task(request, task_id):
     """Delete a task.
     """
@@ -49,6 +54,7 @@ def delete_task(request, task_id):
     return redirect('index', permanent=False)
 
 
+@needs_login
 def ack_task(request, task_id):
     """Acknowledge a task, from a reminder.
 
