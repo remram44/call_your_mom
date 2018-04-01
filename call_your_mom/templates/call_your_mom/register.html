@@ -4,18 +4,14 @@
 
 {% block content %}
 
-{% if email_sent %}
-
   <h1>{% trans "Signing up" %}</h1>
-  {% blocktrans %}
-  <p>We have sent you an email at <em>{{ email_sent }}</em>. Please follow the link inside to start creating tasks.</p>
-  {% endblocktrans %}
-
-{% else %}
-
-  <h1>{% trans "Signing up" %}</h1>
-  <form action="{% url 'register' %}"><p>{% blocktrans %}Just enter your email, and click the link we'll send you to start adding tasks:{% endblocktrans %} <input name="email" type="email"/> <input type="submit" value="{% trans "Go" context "Submit button for email registration" %}"/></p></form>
-
-{% endif %}
+  <form action="{% url 'register' %}" method="post">
+    {% csrf_token %}
+    <p>
+      {% blocktrans %}Just enter your email, and click the link we'll send you to start adding tasks:{% endblocktrans %}
+      <input name="email" type="email"/>
+      <input type="submit" value="{% trans "Go" context "Submit button for email registration" %}"/>
+    </p>
+  </form>
 
 {% endblock %}

@@ -10,9 +10,12 @@ class CYMUser(models.Model):
     USER_ID_KEY = 'cym_user_id'
 
     email = models.CharField(max_length=200, db_index=True)
-    created = models.DateTimeField()
-    last_login = models.DateTimeField()
-    last_email = models.DateTimeField()
+    created = models.DateTimeField(auto_now_add=True)
+    last_login = models.DateTimeField(null=True)
+    last_login_email = models.DateTimeField()
+
+    def __str__(self):
+        return "<CYMUser id={0} email={1}>".format(self.id, self.email)
 
 
 class Task(models.Model):
@@ -26,6 +29,9 @@ class Task(models.Model):
 
 
 class TaskDone(models.Model):
+    class Meta:
+        verbose_name_plural = "Tasks done"
+
     task = models.ForeignKey(Task, on_delete=models.CASCADE)
     done = models.DateTimeField()
     recorded = models.DateTimeField()

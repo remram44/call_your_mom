@@ -1,8 +1,12 @@
 import datetime
+from django.contrib import messages
+from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import redirect, render
 from django.utils import translation
+from django.utils.translation import gettext as _
 
-from .auth import needs_login
+from .auth import needs_login, send_login_email, send_register_email
+from .models import CYMUser
 
 
 def index(request):
@@ -21,10 +25,81 @@ def landing(request):
 
 
 def register(request):
-    """Registration page, via which users sign up for the website.
+    """Registration-or-login page, via which users sign up for the website.
     """
-    # TODO: Register, send email, log user in
-    return render(request, 'call_your_mom/register.html')
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        if not email or len(email) < 3:
+            messages.add_message(request, messages.ERROR,
+                                 _("Please provide an email address"))
+            return redirect('register')
+
+        # Find out if an account exists for the email
+        try:
+            user = CYMUser.objects.get(email=email)
+        except ObjectDoesNotExist:
+            user = None
+        else:
+            # If the user never logged in, delete it
+            if user.last_login is None:
+                user.delete()
+                user = None
+
+        if user is not None:
+            send_login_email(user)
+        else:
+            user = CYMUser(
+                email=email,
+                created=datetime.datetime.now(),
+                last_login_email=datetime.datetime.now(),
+            )
+            user.save()
+            send_register_email(user)
+
+        messages.add_message(
+            request, messages.INFO,
+            _("We have sent an email to {0}. Please follow the link inside to "
+              "start creating tasks.").format(email))
+        return redirect('confirm')
+    else:
+        return render(request, 'call_your_mom/register.html')
+
+
+def login(request):
+    """Login page.
+
+    Prompt the user for an email address, to which a log-in link will be sent.
+    """
+    path = request.GET.get('path', '')
+
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        if not email or len(email) < 3:
+            messages.add_message(request, messages.ERROR,
+                                 _("Please provide an email address"))
+            return redirect('login', path=path)
+
+        # Find out if an account exists for the email
+        try:
+            user = CYMUser.objects.get(email=email)
+        except ObjectDoesNotExist:
+            pass
+        else:
+            send_login_email(user, path)
+
+        messages.add_message(
+            request, messages.INFO,
+            _("We have sent an email to {0}, if such an account exist. Please "
+              "follow the link inside to log in.").format(email))
+        return redirect('confirm')
+    else:
+        return render(request, 'call_your_mom/login.html')
+
+
+def confirm(request):
+    """Confirmation page, no userful content but displays messages.
+    """
+    return render(request, 'call_your_mom/confirm.html')
 
 
 @needs_login
@@ -32,7 +107,8 @@ def profile(request):
     """A user's profile, listing all his tasks.
     """
     # TODO: Get user's tasks
-    return render(request, 'call_your_mom/profile.html')
+    return render(request, 'call_your_mom/profile.html',
+                  {'cym_user': request.cym_user})
 
 
 @needs_login

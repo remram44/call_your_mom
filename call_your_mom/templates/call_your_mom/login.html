@@ -1,0 +1,17 @@
+{% extends "call_your_mom/base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+
+  <h1>{% trans "Log in" %}</h1>
+  <form action="{% url 'login' %}?path={{ path }}" method="post">
+    {% csrf_token %}
+    <p>
+      {% blocktrans %}Just enter your email, and click the link we'll send you to log in:{% endblocktrans %}
+      <input name="email" type="email"/>
+      <input type="submit" value="{% trans "Go" context "Submit button for login" %}"/>
+    </p>
+  </form>
+
+{% endblock %}

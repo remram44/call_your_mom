@@ -3,10 +3,12 @@
 {% load i18n %}
 
 {% block content %}
-  {% blocktrans %}
-  <h1>Settings for <em>{{ user.email }}</em></h1>
-  <p>Those are the tasks you have set up:</p>
-  {% endblocktrans %}
+
+  {% with email=cym_user.email %}
+  <h1>{% blocktrans %}Settings for <em>{{ email }}</em>{% endblocktrans %}</h1>
+  {% endwith %}
+
+  <p>{% blocktrans %}Those are the tasks you have set up:{% endblocktrans %}</p>
 
   <table>
     <tr>
