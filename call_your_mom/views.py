@@ -2,9 +2,13 @@ from django.shortcuts import redirect, render
 from django.utils import translation
 
 
+# TODO: Authenticate user from emailed token
+
+
 def index(request):
     """Website index, redirects either to landing page or profile.
     """
+    # TODO: Redirect to 'profile' if logged in, 'landing' otherwise
     return redirect('landing', permanent=False)
 
 
@@ -17,12 +21,14 @@ def landing(request):
 def register(request):
     """Registration page, via which users sign up for the website.
     """
+    # TODO: Register, send email, log user in
     return render(request, 'call_your_mom/register.html')
 
 
 def profile(request):
     """A user's profile, listing all his tasks.
     """
+    # TODO: Get user's tasks
     return render(request, 'call_your_mom/profile.html')
 
 
@@ -32,12 +38,14 @@ def change_task(request, task_id):
     Note that this is different from acknowledgement page, linked from reminder
     emails.
     """
+    # TODO: Task edit form if user's
     return render(request, 'call_your_mom/change_task.html')
 
 
 def delete_task(request, task_id):
     """Delete a task.
     """
+    # TODO: Delete task if user's
     return redirect('index', permanent=False)
 
 
@@ -47,6 +55,7 @@ def ack_task(request, task_id):
     This is the page that reminder emails link to. It allows the user to set
     when the task was done, and when it is due next.
     """
+    # TODO: Ack task form if user's
     return render(request, 'call_your_mom/acknowledge_task.html')
 
 
