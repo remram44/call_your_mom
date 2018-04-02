@@ -25,7 +25,7 @@ class Task(models.Model):
     name = models.CharField(max_length=80)
     description = models.CharField(max_length=280)
     created = models.DateTimeField()
-    due = models.DateTimeField()
+    due = models.DateField()
 
 
 class TaskDone(models.Model):
@@ -33,5 +33,5 @@ class TaskDone(models.Model):
         verbose_name_plural = "Tasks done"
 
     task = models.ForeignKey(Task, on_delete=models.CASCADE)
-    done = models.DateTimeField()
+    done = models.DateField()
     recorded = models.DateTimeField()
