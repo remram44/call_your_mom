@@ -4,15 +4,15 @@
 
 {% block content %}
 
-  {% blocktrans %}
-  <h1>Task done: {{ task.name }}</h1>
+  {% with task_name=task.name %}
+  <h1>{% blocktrans %}Task done: {{ task.name }}{% endblocktrans %}</h1>
+  {% endwith %}
 
   <form action="{% url 'ack_task' task.id %}" method="post">
     {% csrf_token %}
-    <p>Done on: <input type="date" name="done" value="{{ today }}"/></p>
-    <p>Due: <input type="date" name="due" value="{{ task.due }}"/></p>
-    <p><input type="submit" value="Save"/></p>
+    <p>{% trans "Done on:" context "task form" %} <input type="date" name="done" value="{{ today.isoformat }}"/></p>
+    <p>{% trans "Due:" context "task form" %} <input type="date" name="due" value="{{ next_due.isoformat }}"/></p>
+    <p><input type="submit" value="{% trans "Save" %}"/></p>
   </form>
-  {% endblocktrans %}
 
 {% endblock %}

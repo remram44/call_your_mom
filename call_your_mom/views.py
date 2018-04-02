@@ -232,7 +232,9 @@ def ack_task(request, task_id):
 
     return render(request, 'call_your_mom/acknowledge_task.html',
                   {'task': task,
-                   'today': datetime.date.today()})
+                   'today': datetime.date.today(),
+                   'next_due': datetime.date.today() +
+                               datetime.timedelta(days=1)})
 
 
 def set_lang(request, lang):
