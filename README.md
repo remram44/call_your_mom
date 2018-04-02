@@ -50,3 +50,14 @@ You can then copy `website/settings,py.sample` to `website/settings.py` and read
 To start the development server, you can use `pipenv run python manage.py runserver`.
 
 To deploy this, you can use the WSGI app `website.wsgi`.
+
+## How do I use this with Docker
+
+The Dockerfile can be used to set this up for development easily. You can start the server with:
+
+```sh
+# Builds the image
+docker build -t call_your_mom .
+# Runs the server
+docker run -ti --rm -p 8000:8000 -v $PWD/website:/usr/src/app/website -v $PWD/call_your_mom:/usr/src/app/call_your_mom call_your_mom
+```
