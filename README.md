@@ -43,9 +43,11 @@ There are two types of tasks:
 
 ## How do I install or deploy this
 
-This is a WSGI app using Django. To install it, you will need Python 3 and [pipenv](https://docs.pipenv.org/), then simply do `pipenv install`.
+This is a WSGI app using Django. To install it, you will need Python 3 and [pipenv](https://docs.pipenv.org/), then do `pipenv install`.
 
-You can then copy `website/settings.py.sample` to `website/settings.py` and read it over.
+Copy `website/settings.py.sample` to `website/settings.py` and read it over.
+
+Run `pipenv run python manage.py migrate` to setup the database (`db.sqlite3` by default).
 
 To start the development server, you can use `pipenv run python manage.py runserver`.
 
