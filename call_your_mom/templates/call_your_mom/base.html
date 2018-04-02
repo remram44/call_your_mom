@@ -1,5 +1,5 @@
 {% load i18n %}{% load static %}<!DOCTYPE html>
-<html lang="{{ LANGUAGE_CODE }}">
+{% get_current_language as LANGUAGE_CODE %}<html lang="{{ LANGUAGE_CODE }}">
 <head>
   <meta charset="UTF-8">
   <title>{% block page_title %}Call Your Mom{% endblock %}</title>
@@ -18,7 +18,6 @@
 
   <footer style="color:silver; font-size: 80%;">{% with project_url="https://github.com/remram44/call_your_mom" %}{% blocktrans %}Call Your Mom sources available on <a href="{{ project_url }}">github.com</a>{% endblocktrans %}{% endwith %}<br/>
 
-  {% get_current_language as LANGUAGE_CODE %}
   {% get_available_languages as LANGUAGES %}
   {% get_language_info_list for LANGUAGES as languages %}
   {% for language in languages %}

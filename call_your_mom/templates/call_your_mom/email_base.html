@@ -1,4 +1,4 @@
-{% load i18n %}<html lang="{{ LANGUAGE_CODE }}">
+{% load i18n %}{% get_current_language as LANGUAGE_CODE %}<html lang="{{ LANGUAGE_CODE }}">
 <head></head>
 <body>
 {% block content %}{% endblock %}
