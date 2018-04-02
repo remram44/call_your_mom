@@ -2,8 +2,8 @@ import datetime
 import dateutil.parser
 from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
-from django.http import Http404, HttpResponseNotFound
-from django.shortcuts import redirect, render, get_object_or_404
+from django.http import HttpResponseNotFound
+from django.shortcuts import redirect, render
 from django.utils import translation
 from django.utils.translation import gettext as _
 
