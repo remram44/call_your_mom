@@ -4,20 +4,25 @@
   <meta charset="UTF-8">
   <title>{% block page_title %}Call Your Mom{% endblock %}</title>
   <link rel="stylesheet" media="all" href="{% static 'main.css' %}"/>
+  <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/yeti/bootstrap.min.css" rel="stylesheet" integrity="sha384-ai4W/dNRpZ8Bl2+MNe2GXtf7urjWG5od4NHaCWEwrMeLzfDEQWZjFFIjQ6zG4R3W" crossorigin="anonymous">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
 </head>
 <body>
+<div class="container">
+  <div class="page-header">
+    <h1><i class="fas fa-phone-volume"></i> CALL! YOUR! MOM!</h1>      
+    <hr/>
+  </div>
+
   {% if messages %}
-  <ul>
     {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+		 <div class="alert alert-dismissible alert-info"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>{{ message }}</strong></div>
     {% endfor %}
-  </ul>
   {% endif %}
 
   {% block content %}{% endblock %}
 
-  <footer style="color:silver; font-size: 80%;">{% with project_url="https://github.com/remram44/call_your_mom" %}{% blocktrans %}Call Your Mom sources available on <a href="{{ project_url }}">github.com</a>{% endblocktrans %}{% endwith %}<br/>
-
+  <footer><hr/>{% with project_url="https://github.com/remram44/call_your_mom" %}{% blocktrans %}Call Your Mom sources available on <a href="{{ project_url }}">github.com</a>{% endblocktrans %}{% endwith %}<br/>
   {% get_available_languages as LANGUAGES %}
   {% get_language_info_list for LANGUAGES as languages %}
   {% for language in languages %}
@@ -30,5 +35,8 @@
     {% endif %}
   {% endfor %}
   </footer>
+ </div>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </body>
 </html>

@@ -10,9 +10,10 @@
 
   <p><a href="{% url 'logout' %}">Click here to log out</a></p>
 
-  <p>{% blocktrans %}Those are the tasks you have set up:{% endblocktrans %}</p>
+  <p>{% blocktrans %}Here are your tasks:{% endblocktrans %}</p>
 
-  <table>
+  <table class="table table-striped">
+		<thead>
     <tr>
       <th>{% trans "Name" %}</th>
       <th>{% trans "Type" %}</th>
@@ -21,6 +22,7 @@
       <th>{% trans "Due" %}</th>
       <td></td>
     </tr>
+  </thead>
     {% for task in tasks %}
     <tr>
       <td>{{ task.name }}</td>
@@ -29,8 +31,8 @@
       <td>{{ task.interval_days }}</td>
       <td>{{ task.due }}</td>
       <td>
-        <a href="{% url 'change_task' task.id %}">{% trans "edit" %}</a>
-        <a href="{% url 'delete_task' task.id %}">{% trans "delete" %}</a>
+        <a href="{% url 'change_task' task.id %}"><i class="fas fa-edit fa-lg" title="Edit task"></i></a>
+        <a href="{% url 'delete_task' task.id %}"><i class="fas fa-trash fa-lg" title="Delete task"></i></a>
       </td>
     </tr>
     {% empty %}

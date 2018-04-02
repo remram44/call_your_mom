@@ -4,44 +4,44 @@
 
 {% block content %}
   {% blocktrans %}
-  <h1>Welcome!</h1>
-  <p>This is a web application meant to remind you to do some periodic tasks.</p>
+ 
+  <h1>What is this website for?</h1>
+	<p>Folks use things like lists, boards (Trello or white!), or bug trackers to organize tasks. Others tend to treat their inbox as a job queue or to-do list as well. However, none of those systems are meant for tasks that need to happen again and again.</p>
+	<p>Sometimes, we don't know how far in advance it would be a good time to do one of those tasks again. It's a hassle to keep postponing the task in a calendar or moving to acrcoss lists over and over again. There is also the risk that of missing the notification, and then it'll remind us about it again. That unread message sitting in an email inbox will burn our eyes until we take care of it.</p>  
+	<p>After signing up with your email, you can set tasks that should be done every X number of days. The system will remind you when it is time! You can set any task name, description, and interval (every two weeks, etc.). By clicking the link in the email, you can set the next time it should be done.</p>
 
-  <h2>What?</h2>
-  <p>After signing up with your email, you can set tasks that should be done every N days, and the system will remind you when it is time. You can set any task name, description, and interval. By clicking the link in the email, you can set the next time it should be done.</p>
+	<h1>What can I use this for?</h1>
+		<h3>Tasks that should not be forgotten too long <small>like calling your mom.</small></h3>
+			<p>If you call her before being reminded, or she calls you, good for you. The reminder will start counting down from that date, so the reminder date changes. This works for other tasks like:</p>
+			<ul>
+		    <li><a href="https://www.duplicati.com/">Backup your computer</a> and phone once a week</li>
+		    <li>Clean the floors once every two weeks</li>
+		    <li>Write a blog post once a month</li>
+		    <li>Date night every other day</li>
+		    <li>Schedule a meeting for your project every 15 days</li>
+		    <li>Call your mom more!</li>
+		  </ul>
 
-  <h2>What can I use this for?</h2>
+			<h3>Tasks that need to happen on a specific day<small> like on Wednesdays, the weekend, or the 1st of the month</small></h3>
+			<p>No matter when you acknowledge the reminder, the system will keep to the initial schedule. Other tasks like this one might be:</p>
+			<ul>
+				<li>Make class slides every Thursday</li>
+		  	<li>Team meetings every Friday morning</li>
+				<li>Food coop shift on the third Sunday of the month</li>
+				<li>Town hall meetings on the last Tuesday of the month</li>
+				<li>New X-Files episodes every Wednesday</li>
+		  	<li>Play the <a href="http://nuclearthrone.com/">Nuclear Throne</a> weeklies</li>
+			</ul>
 
-  <p>There are two types of tasks:</p>
-  <ul>
-    <li>The ones that should not be forgotten too long (like calling your mom. If you call her before being reminded, or she calls you, good for you. The reminder will start counting down from that date, so the reminder date changes).
-    <br/>Examples:
-      <ul>
-        <li><a href="https://www.duplicati.com/">Backup your computer</a> and phone</li>
-        <li>Clean the floors</li>
-        <li>Write a blog post</li>
-        <li>Date night</li>
-        <li>Schedule a meeting for your project</li>
-        <li>Call your mom!</li>
-      </ul>
-    </li>
-    <li>The ones that need to happen on a specific day exactly (like things you only do on weekends, or on Wednesdays, or the first day of the month). No matter when you acknowledge the reminder, the system will keep to the initial schedule.
-    <br/>Examples:
-      <ul>
-        <li>Team meeting</li>
-        <li>Play the <a href="http://nuclearthrone.com/">Nuclear Throne</a> weeklies</li>
-      </ul>
-    </li>
-  </ul>
   {% endblocktrans %}
 
-  <h2>{% trans "Where do I sign up?" %}</h2>
-  <form action="{% url 'register' %}" method="post">
+  <h1>{% trans "Where do I sign up?" %}</h1>
+  <form class="form-inline" action="{% url 'register' %}" method="post">
     {% csrf_token %}
     <p>
-      {% blocktrans %}Just enter your email, and click the link we'll send you to start adding tasks:{% endblocktrans %}
-      <input name="email" type="email"/>
-      <input type="submit" value="{% trans "Go" context "Submit button for email registration" %}"/>
+      {% blocktrans %}When you submit your email here, we'll send you a link you can use to start adding tasks:{% endblocktrans %}
+      <input class="form-control" name="email" type="email"/>
+      <input class="btn btn-outline-info" type="submit" value="{% trans "Go" context "Submit button for email registration" %}"/>
     </p>
   </form>
 
