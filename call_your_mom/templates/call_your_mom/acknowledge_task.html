@@ -7,9 +7,9 @@
   {% blocktrans %}
   <h1>Task done: {{ task.name }}</h1>
 
-  <form action="{% url 'ack_task' %}">
+  <form action="{% url 'ack_task' task.id %}">
     <p>Done on: <input type="date" name="done" value="{{ today }}"/></p>
-    <p>Due: <input type="date" name="due" value="{{ task_due }}"/></p>
+    <p>Due: <input type="date" name="due" value="{{ task.due }}"/></p>
     <p><input type="submit" value="Save"/></p>
   </form>
   {% endblocktrans %}

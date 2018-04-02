@@ -4,15 +4,25 @@
 
 {% block content %}
 
-  {% blocktrans %}
-  <h1>Edit task: {{ task.name }}</h1>
+  {% if task %}
+  {% with name=task.name %}
+  <h1>{% blocktrans %}Edit task: {{ name }}{% endblocktrans %}</h1>
+  {% endwith %}
 
-  <form action="{% url 'change_task' %}">
-    <p>Name: <input type="text" name="name" value="{{ task.name }}"/></p>
-    <p>Description: <textarea name="description"></textarea></p>
-    <p>Due: <input type="date" name="due" value="{{ task.due }}"/></p>
-    <p><input type="submit" value="Save"/></p>
+  <form action="{% url 'change_task' task.id %}">
+    <p>{% trans "Name:" context "task form" %} <input type="text" name="name" value="{{ task.name }}"/></p>
+    <p>{% trans "Description:" context "task form" %} <textarea name="description">{{ task.description }}</textarea></p>
+    <p>{% trans "Due:" context "task form" %} <input type="date" name="due" value="{{ task.due.isoformat }}"/></p>
+    <p><input type="submit" value="{% trans "Save" context "change task" %}"/></p>
   </form>
-  {% endblocktrans %}
+  {% else %}
+  <h1>{% blocktrans %}Create a task{% endblocktrans %}</h1>
+  <form action="{% url 'change_task' 'new' %}">
+    <p>{% trans "Name:" context "task form" %} <input type="text" name="name"/></p>
+    <p>{% trans "Description:" context "task form" %} <textarea name="description"></textarea></p>
+    <p>{% trans "Due:" context "task form" %} <input type="date" name="due" value=""/></p>
+    <p><input type="submit" value="{% trans "Create" context "new task" %}"/></p>
+  </form>
+  {% endif %}
 
 {% endblock %}

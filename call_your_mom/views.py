@@ -1,13 +1,14 @@
 import datetime
 from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
-from django.shortcuts import redirect, render
+from django.http import Http404, HttpResponseNotFound
+from django.shortcuts import redirect, render, get_object_or_404
 from django.utils import translation
 from django.utils.translation import gettext as _
 
 from .auth import needs_login, send_login_email, send_register_email, \
     clear_login
-from .models import CYMUser
+from .models import CYMUser, Task
 
 
 def index(request):
@@ -116,9 +117,9 @@ def confirm(request):
 def profile(request):
     """A user's profile, listing all his tasks.
     """
-    # TODO: Get user's tasks
     return render(request, 'call_your_mom/profile.html',
-                  {'cym_user': request.cym_user})
+                  {'cym_user': request.cym_user,
+                   'tasks': request.cym_user.task_set.all()})
 
 
 @needs_login
@@ -128,8 +129,20 @@ def change_task(request, task_id):
     Note that this is different from acknowledgement page, linked from reminder
     emails.
     """
-    # TODO: Task edit form if user's
-    return render(request, 'call_your_mom/change_task.html')
+    if task_id == 'new':
+        task = None
+    else:
+        try:
+            task = Task.objects.get(id=int(task_id))
+        except (ObjectDoesNotExist, ValueError):
+            task = None
+        if not task or task.user.id != request.cym_user.id:
+            return HttpResponseNotFound(_("Couldn't find this task!"))
+
+    # TODO: Create or edit task
+
+    return render(request, 'call_your_mom/change_task.html',
+                  {'task': task})
 
 
 @needs_login
@@ -147,8 +160,18 @@ def ack_task(request, task_id):
     This is the page that reminder emails link to. It allows the user to set
     when the task was done, and when it is due next.
     """
+    try:
+        task = Task.objects.get(id=task_id)
+    except ObjectDoesNotExist:
+        task = None
+    if not task or task.user.id != request.cym_user.id:
+        return HttpResponseNotFound(_("Couldn't find this task!"))
+
     # TODO: Ack task form if user's
-    return render(request, 'call_your_mom/acknowledge_task.html')
+
+    return render(request, 'call_your_mom/acknowledge_task.html',
+                  {'task': task,
+                   'today': datetime.date.today()})
 
 
 def set_lang(request, lang):
