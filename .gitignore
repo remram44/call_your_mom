@@ -30,3 +30,6 @@ nosetests.xml
 
 # PyCharm
 .idea
+
+# Database
+db.sqlite3
