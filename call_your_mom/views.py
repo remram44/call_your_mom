@@ -199,8 +199,19 @@ def change_task(request, task_id):
 def delete_task(request, task_id):
     """Delete a task.
     """
-    # TODO: Delete task if user's
-    return redirect('index', permanent=False)
+    try:
+        task_id = int(task_id)
+        task = Task.objects.get(id=task_id)
+    except (ObjectDoesNotExist, ValueError):
+        task = None
+    if not task or task.user.id != request.cym_user.id:
+        return HttpResponseNotFound(_("Couldn't find this task!"))
+
+    task.delete()
+    messages.add_message(request, messages.INFO,
+                         _("Task deleted"))
+
+    return redirect('profile', permanent=False)
 
 
 @needs_login
