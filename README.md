@@ -45,7 +45,7 @@ There are two types of tasks:
 
 This is a WSGI app using Django. To install it, you will need Python 3 and [pipenv](https://docs.pipenv.org/), then simply do `pipenv install`.
 
-You can then copy `website/settings,py.sample` to `website/settings.py` and read it over.
+You can then copy `website/settings.py.sample` to `website/settings.py` and read it over.
 
 To start the development server, you can use `pipenv run python manage.py runserver`.
 
