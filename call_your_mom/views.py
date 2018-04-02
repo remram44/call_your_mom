@@ -230,7 +230,7 @@ def ack_task(request, task_id):
 
     # TODO: Ack task form if user's
 
-    return render(request, 'call_your_mom/acknowledge_task.html',
+    return render(request, 'call_your_mom/ack_task.html',
                   {'task': task,
                    'today': datetime.date.today(),
                    'next_due': datetime.date.today() +
