@@ -7,52 +7,46 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-01 14:01-0400\n"
-"PO-Revision-Date: 2018-04-01 14:43-0400\n"
+"POT-Creation-Date: 2018-04-01 21:48-0400\n"
+"PO-Revision-Date: 2018-04-01 21:56-0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"Last-Translator: \n"
-"Language-Team: \n"
 "X-Generator: Poedit 2.0.4\n"
 
-#: call_your_mom/models.py:13
+#: models.py:22
 msgid "normal"
 msgstr "normal"
 
-#: call_your_mom/models.py:13
+#: models.py:22
 msgid "exact"
 msgstr "exact"
 
-#: call_your_mom/templates/call_your_mom/acknowledge_task.html:7
+#: templates/call_your_mom/ack_task.html:8
 #, python-format
-msgid ""
-"\n"
-"  <h1>Task done: %(task.name)s</h1>\n"
-"\n"
-"  <form action=\"/change_task\">\n"
-"    <p>Done on: <input type=\"date\" name=\"done\" value=\"%(today)s\"/></"
-"p>\n"
-"    <p>Due: <input type=\"date\" name=\"due\" value=\"%(task_due)s\"/></p>\n"
-"    <p><input type=\"submit\" value=\"Save\"/></p>\n"
-"  </form>\n"
-"  "
-msgstr ""
-"\n"
-"  <h1>Tâche effectuée: %(task.name)s</h1>\n"
-"\n"
-"  <form action=\"/change_task\">\n"
-"    <p>Effectuée le : <input type=\"date\" name=\"done\" value=\"%(today)s\"/"
-"></p>\n"
-"    <p>Prochaine échéance : <input type=\"date\" name=\"due\" value="
-"\"%(task_due)s\"/></p>\n"
-"    <p><input type=\"submit\" value=\"Enregistrer\"/></p>\n"
-"  </form>\n"
-"  "
+msgid "Task done: %(task_name)s"
+msgstr "Tâche effectuée: %(task_name)s"
 
-#: call_your_mom/templates/call_your_mom/base.html:12
+#: templates/call_your_mom/ack_task.html:13
+msgctxt "task form"
+msgid "Done on:"
+msgstr "Effectuée le :"
+
+#: templates/call_your_mom/ack_task.html:14
+#: templates/call_your_mom/change_task.html:18
+msgctxt "task form"
+msgid "Due:"
+msgstr "Échéance :"
+
+#: templates/call_your_mom/ack_task.html:15
+msgid "Save"
+msgstr "Valider"
+
+#: templates/call_your_mom/base.html:18
 #, python-format
 msgid ""
 "Call Your Mom sources available on <a href=\"%(project_url)s\">github.com</a>"
@@ -60,35 +54,45 @@ msgstr ""
 "Code source de Call Your Mom accessibles sur <a href=\"%(project_url)s"
 "\">github.com</a>"
 
-#: call_your_mom/templates/call_your_mom/change_task.html:7
-#, python-format
-msgid ""
-"\n"
-"  <h1>Edit task: %(task.name)s</h1>\n"
-"\n"
-"  <form action=\"/change_task\">\n"
-"    <p>Name: <input type=\"text\" name=\"name\" value=\"%(task.name)s\"/></"
-"p>\n"
-"    <p>Description: <textarea name=\"description\"></textarea></p>\n"
-"    <p>Due: <input type=\"date\" name=\"due\" value=\"%(task.due)s\"/></p>\n"
-"    <p><input type=\"submit\" value=\"Save\"/></p>\n"
-"  </form>\n"
-"  "
-msgstr ""
-"\n"
-"  <h1>Modification de la tâche : %(task.name)s</h1>\n"
-"\n"
-"  <form action=\"/change_task\">\n"
-"    <p>Nom : <input type=\"text\" name=\"name\" value=\"%(task.name)s\"/></"
-"p>\n"
-"    <p>Description : <textarea name=\"description\"></textarea></p>\n"
-"    <p>Échéance : <input type=\"date\" name=\"due\" value=\"%(task.due)s\"/"
-"></p>\n"
-"    <p><input type=\"submit\" value=\"Enregistrer\"/></p>\n"
-"  </form>\n"
-"  "
+#: templates/call_your_mom/change_task.html:8
+msgid "Create a task"
+msgstr "Créer une tâche"
 
-#: call_your_mom/templates/call_your_mom/landing.html:6
+#: templates/call_your_mom/change_task.html:10
+#, python-format
+msgid "Edit task: %(task_name)s"
+msgstr "Modification d'une tâche : %(task_name)s"
+
+#: templates/call_your_mom/change_task.html:15
+msgctxt "task form"
+msgid "Name:"
+msgstr "Nom :"
+
+#: templates/call_your_mom/change_task.html:16
+msgctxt "task form"
+msgid "Description:"
+msgstr "Description :"
+
+#: templates/call_your_mom/change_task.html:17
+msgctxt "task form"
+msgid "Interval (days):"
+msgstr "Intervalle (jours) :"
+
+#: templates/call_your_mom/change_task.html:21
+msgctxt "change task"
+msgid "Save"
+msgstr "Valider"
+
+#: templates/call_your_mom/change_task.html:23
+msgctxt "new task"
+msgid "Create"
+msgstr "Créer"
+
+#: templates/call_your_mom/confirm.html:7
+msgid "Thank you for using Call Your Mom!"
+msgstr "Merci d'utiliser Call Your Mom !"
+
+#: templates/call_your_mom/landing.html:6
 msgid ""
 "\n"
 "  <h1>Welcome!</h1>\n"
@@ -180,66 +184,12 @@ msgstr ""
 "  </ul>\n"
 "  "
 
-#: call_your_mom/templates/call_your_mom/landing.html:38
+#: templates/call_your_mom/landing.html:38
 msgid "Where do I sign up?"
 msgstr "Où est-ce que je m'inscris ?"
 
-#: call_your_mom/templates/call_your_mom/profile.html:6
-#, python-format
-msgid ""
-"\n"
-"  <h1>Settings for <em>%(user.email)s</em></h1>\n"
-"  <p>Those are the tasks you have set up:</p>\n"
-"  "
-msgstr ""
-"\n"
-"  <h1>Configuration pour <em>%(user.email)s</em></h1>\n"
-"  <p>Voici les tâches que tu as ajouté :</p>\n"
-"  "
-
-#: call_your_mom/templates/call_your_mom/profile.html:13
-msgid "Name"
-msgstr "Nom"
-
-#: call_your_mom/templates/call_your_mom/profile.html:14
-msgid "Type"
-msgstr "Type"
-
-#: call_your_mom/templates/call_your_mom/profile.html:15
-msgid "Created"
-msgstr "Créée"
-
-#: call_your_mom/templates/call_your_mom/profile.html:16
-msgid "Due"
-msgstr "Échéance"
-
-#: call_your_mom/templates/call_your_mom/profile.html:26
-msgid "edit"
-msgstr "modifier"
-
-#: call_your_mom/templates/call_your_mom/profile.html:27
-msgid "delete"
-msgstr "supprimer"
-
-#: call_your_mom/templates/call_your_mom/register.html:9
-#: call_your_mom/templates/call_your_mom/register.html:16
-msgid "Signing up"
-msgstr "Inscription"
-
-#: call_your_mom/templates/call_your_mom/register.html:10
-#, python-format
-msgid ""
-"\n"
-"  <p>We have sent you an email at <em>%(email_sent)s</em>. Please follow the "
-"link inside to start creating tasks.</p>\n"
-"  "
-msgstr ""
-"\n"
-"  <p>Nous t'avons envoyé un email à <em>%(email_sent)s</em>. Merci de suivre "
-"le lien à l'intérieur pour commencer à ajouter des tâches.</p>\n"
-"  "
-
-#: call_your_mom/templates/call_your_mom/register.html:17
+#: templates/call_your_mom/landing.html:42
+#: templates/call_your_mom/register.html:11
 msgid ""
 "Just enter your email, and click the link we'll send you to start adding "
 "tasks:"
@@ -247,7 +197,184 @@ msgstr ""
 "Entre ton addresse email et clique le lien qu'on t'envoie pour commencer à "
 "ajouter des tâches :"
 
-#: call_your_mom/templates/call_your_mom/register.html:17
+#: templates/call_your_mom/landing.html:44
+#: templates/call_your_mom/register.html:13
 msgctxt "Submit button for email registration"
 msgid "Go"
 msgstr "Ok"
+
+#: templates/call_your_mom/login.html:7
+msgid "Log in"
+msgstr "Se connecter"
+
+#: templates/call_your_mom/login.html:11
+msgid "Just enter your email, and click the link we'll send you to log in:"
+msgstr ""
+"Entre ton addresse email et clique le lien qu'on t'envoie pour te connecter :"
+
+#: templates/call_your_mom/login.html:13
+msgctxt "Submit button for login"
+msgid "Go"
+msgstr "Ok"
+
+#: templates/call_your_mom/profile.html:8
+#, python-format
+msgid "Settings for <em>%(email)s</em>"
+msgstr "Configuration pour <em>%(email)s</em>"
+
+#: templates/call_your_mom/profile.html:13
+msgid "Those are the tasks you have set up:"
+msgstr "Voici les tâches que tu as créées :"
+
+#: templates/call_your_mom/profile.html:17
+msgid "Name"
+msgstr "Nom"
+
+#: templates/call_your_mom/profile.html:18
+msgid "Type"
+msgstr "Type"
+
+#: templates/call_your_mom/profile.html:19
+msgid "Created"
+msgstr "Créée"
+
+#: templates/call_your_mom/profile.html:20
+msgid "Interval"
+msgstr "Intervalle"
+
+#: templates/call_your_mom/profile.html:21
+msgid "Due"
+msgstr "Échéance"
+
+#: templates/call_your_mom/profile.html:32
+msgid "edit"
+msgstr "modifier"
+
+#: templates/call_your_mom/profile.html:33
+msgid "delete"
+msgstr "supprimer"
+
+#: templates/call_your_mom/profile.html:38
+msgid "No task yet"
+msgstr "Aucune tâche pour l'instant"
+
+#: templates/call_your_mom/profile.html:42
+msgid "Add a task"
+msgstr "Créer une tâche"
+
+#: templates/call_your_mom/register.html:7
+msgid "Signing up"
+msgstr "Inscription"
+
+#: views.py:37 views.py:82
+msgid "Please provide an email address"
+msgstr "Merci d'entrer une addresse email"
+
+#: views.py:64
+#, python-brace-format
+msgid ""
+"We have sent an email to {0}. Please follow the link inside to start "
+"creating tasks."
+msgstr ""
+"Nous avons envoyé un email à {0}. Merci de suivre le lien à l'intérieur pour "
+"commencer à ajouter des tâches."
+
+#: views.py:95
+#, python-brace-format
+msgid ""
+"We have sent an email to {0}, if such an account exist. Please follow the "
+"link inside to log in."
+msgstr ""
+"Nous avons envoyé un email à {0}, si ce compte existe. Merci de suivre le "
+"lien à l'intérieur pour te connecter."
+
+#: views.py:107
+msgid "You have been logged out."
+msgstr "Tu as été déconnecté."
+
+#: views.py:142 views.py:227 views.py:248
+msgid "Couldn't find this task!"
+msgstr "Impossible de trouver cette tâche !"
+
+#: views.py:177
+msgid "Please give your task a name"
+msgstr "Merci de donner un nom à ta tâche"
+
+#: views.py:182
+msgid "Please enter an interval"
+msgstr "Merci d'entrer un intervalle"
+
+#: views.py:196
+msgid "Task updated"
+msgstr "Tâche mise à jour"
+
+#: views.py:205
+msgid "Task created"
+msgstr "Tâche créée"
+
+#: views.py:231
+msgid "Task deleted"
+msgstr "Tâche supprimée"
+
+#~ msgid ""
+#~ "\n"
+#~ "  <h1>Task done: %(task.name)s</h1>\n"
+#~ "\n"
+#~ "  <form action=\"/change_task\">\n"
+#~ "    <p>Done on: <input type=\"date\" name=\"done\" value=\"%(today)s\"/></"
+#~ "p>\n"
+#~ "    <p>Due: <input type=\"date\" name=\"due\" value=\"%(task_due)s\"/></"
+#~ "p>\n"
+#~ "    <p><input type=\"submit\" value=\"Save\"/></p>\n"
+#~ "  </form>\n"
+#~ "  "
+#~ msgstr ""
+#~ "\n"
+#~ "  <h1>Tâche effectuée: %(task.name)s</h1>\n"
+#~ "\n"
+#~ "  <form action=\"/change_task\">\n"
+#~ "    <p>Effectuée le : <input type=\"date\" name=\"done\" value=\"%(today)s"
+#~ "\"/></p>\n"
+#~ "    <p>Prochaine échéance : <input type=\"date\" name=\"due\" value="
+#~ "\"%(task_due)s\"/></p>\n"
+#~ "    <p><input type=\"submit\" value=\"Enregistrer\"/></p>\n"
+#~ "  </form>\n"
+#~ "  "
+
+#~ msgid ""
+#~ "\n"
+#~ "  <h1>Edit task: %(task.name)s</h1>\n"
+#~ "\n"
+#~ "  <form action=\"/change_task\">\n"
+#~ "    <p>Name: <input type=\"text\" name=\"name\" value=\"%(task.name)s\"/"
+#~ "></p>\n"
+#~ "    <p>Description: <textarea name=\"description\"></textarea></p>\n"
+#~ "    <p>Due: <input type=\"date\" name=\"due\" value=\"%(task.due)s\"/></"
+#~ "p>\n"
+#~ "    <p><input type=\"submit\" value=\"Save\"/></p>\n"
+#~ "  </form>\n"
+#~ "  "
+#~ msgstr ""
+#~ "\n"
+#~ "  <h1>Modification de la tâche : %(task.name)s</h1>\n"
+#~ "\n"
+#~ "  <form action=\"/change_task\">\n"
+#~ "    <p>Nom : <input type=\"text\" name=\"name\" value=\"%(task.name)s\"/"
+#~ "></p>\n"
+#~ "    <p>Description : <textarea name=\"description\"></textarea></p>\n"
+#~ "    <p>Échéance : <input type=\"date\" name=\"due\" value=\"%(task.due)s"
+#~ "\"/></p>\n"
+#~ "    <p><input type=\"submit\" value=\"Enregistrer\"/></p>\n"
+#~ "  </form>\n"
+#~ "  "
+
+#~ msgid ""
+#~ "\n"
+#~ "  <h1>Settings for <em>%(user.email)s</em></h1>\n"
+#~ "  <p>Those are the tasks you have set up:</p>\n"
+#~ "  "
+#~ msgstr ""
+#~ "\n"
+#~ "  <h1>Configuration pour <em>%(user.email)s</em></h1>\n"
+#~ "  <p>Voici les tâches que tu as ajouté :</p>\n"
+#~ "  "
