@@ -5,7 +5,7 @@
 {% block content %}
 
   {% with task_name=task.name %}
-  <h1>{% blocktrans %}Task done: {{ task.name }}{% endblocktrans %}</h1>
+  <h1>{% blocktrans %}Task done: {{ task_name }}{% endblocktrans %}</h1>
   {% endwith %}
 
   <form action="{% url 'ack_task' task.id %}" method="post">
