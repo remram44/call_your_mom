@@ -11,6 +11,7 @@ class CYMUser(models.Model):
 
     email = models.CharField(max_length=200, db_index=True)
     created = models.DateTimeField(auto_now_add=True)
+    language = models.CharField(max_length=10, default='en')
     last_login = models.DateTimeField(null=True)
     last_login_email = models.DateTimeField()
 
