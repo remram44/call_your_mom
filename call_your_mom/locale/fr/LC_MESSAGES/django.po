@@ -129,6 +129,10 @@ msgstr "Valider"
 msgid "Thank you for using Call Your Mom!"
 msgstr "Merci d'utiliser Call Your Mom !"
 
+#: templates/call_your_mom/confirm.html:9
+msgid "Back to the index"
+msgstr "Retour à l'accueil"
+
 #: templates/call_your_mom/email_reminder.html:7
 msgid "You asked to be reminded of this task by Call Your mom."
 msgstr "Tu as demandé à être rappelé de cette tâche par Call Your Mom."
