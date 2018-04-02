@@ -27,6 +27,11 @@ class TokenAuthMiddleware(MiddlewareMixin):
             request.cym_user.last_login = datetime.datetime.now()
             request.cym_user.save()
             request.session[CYMUser.USER_ID_KEY] = user_id
+
+            # Also set preferred language
+            lang = request.cym_user.language
+            translation.activate(lang)
+            request.session[translation.LANGUAGE_SESSION_KEY] = lang
         # Get user from session
         elif CYMUser.USER_ID_KEY in request.session:
             user_id = request.session[CYMUser.USER_ID_KEY]
