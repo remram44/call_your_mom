@@ -161,7 +161,7 @@ def change_task(request, task_id):
 
         if task_due:
             try:
-                task_due = dateutil.parser.parse(task_due)
+                task_due = dateutil.parser.parse(task_due).date()
             except ValueError:
                 task_due = None
         if task_interval_days:
