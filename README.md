@@ -6,7 +6,11 @@ After signing up with your email, you can set tasks that should be done every N 
 
 ## Development status
 
-I just started. This is not yet ready to use.
+This should be close to ready, but hasn't been tested very much just yet.
+
+Expect this to be deployed publicly in a few days.
+
+Contributions welcome!
 
 ## Motivation
 
