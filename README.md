@@ -40,3 +40,13 @@ There are two types of tasks:
 * The ones that need to happen on a specific day exactly (like things you only do on weekends, or on Wednesdays, or the first day of the month). No matter when you acknowledge the reminder, the system will keep to the initial schedule. Examples:
   * Team meeting
   * Play the Nuclear Throne weekly
+
+## How do I install or deploy this
+
+This is a WSGI app using Django. To install it, you will need Python 3 and [pipenv](https://docs.pipenv.org/), then simply do `pipenv install`.
+
+You can then copy `website/settings,py.sample` to `website/settings.py` and read it over.
+
+To start the development server, you can use `pipenv run python manage.py runserver`.
+
+To deploy this, you can use the WSGI app `website.wsgi`.
