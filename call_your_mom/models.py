@@ -25,6 +25,7 @@ class Task(models.Model):
     name = models.CharField(max_length=80)
     description = models.CharField(max_length=280)
     created = models.DateTimeField(auto_now_add=True)
+    interval_days = models.IntegerField()
     due = models.DateField()
     reminded = models.DateField(null=True)
 

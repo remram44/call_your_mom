@@ -14,6 +14,7 @@
     {% csrf_token %}
     <p>{% trans "Name:" context "task form" %} <input type="text" name="name" value="{{ task_name }}"/></p>
     <p>{% trans "Description:" context "task form" %} <textarea name="description">{{ task_description }}</textarea></p>
+    <p>{% trans "Interval (days):" context "task form" %} <input type="number" name="interval_days" value="{{ task_interval_days }}"/></p>
     <p>{% trans "Due:" context "task form" %} <input type="date" name="due" value="{{ task_due.isoformat }}"/></p>
     <p>
       {% if new %}
