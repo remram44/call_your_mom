@@ -1,4 +1,5 @@
 import datetime
+import dateutil.parser
 from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404, HttpResponseNotFound
@@ -133,16 +134,65 @@ def change_task(request, task_id):
         task = None
     else:
         try:
-            task = Task.objects.get(id=int(task_id))
+            task_id = int(task_id)
+            task = Task.objects.get(id=task_id)
         except (ObjectDoesNotExist, ValueError):
             task = None
         if not task or task.user.id != request.cym_user.id:
             return HttpResponseNotFound(_("Couldn't find this task!"))
 
-    # TODO: Create or edit task
+    if task:
+        task_name = task.name
+        task_description = task.description
+        task_due = task.due
+    else:
+        task_name = ''
+        task_description = ''
+        task_due = datetime.date.today() + datetime.timedelta(days=1)
+
+    if request.method == 'POST':
+        task_name = request.POST.get('name', '')
+        task_description = request.POST.get('description', '')
+        task_due = request.POST.get('due', '')
+
+        if task_due:
+            try:
+                task_due = dateutil.parser.parse(task_due)
+            except ValueError:
+                task_due = None
+
+        if not task_name:
+            messages.add_message(request, messages.ERROR,
+                                 _("Please give your task a name"))
+        elif not task_due:
+            messages.add_message(request, messages.ERROR,
+                                 _("Please give your task a name"))
+            if task:
+                task_due = task.due
+        else:
+            if task:
+                task.name = task_name
+                task.description = task_description
+                task.due = task_due
+                task.save()
+                messages.add_message(request, messages.INFO,
+                                     _("Task updated"))
+            else:
+                task = Task(user_id=request.cym_user.id,
+                            name=task_name,
+                            description=task_description,
+                            due=task_due)
+                task.save()
+                messages.add_message(request, messages.INFO,
+                                     _("Task created"))
+            return redirect('profile')
 
     return render(request, 'call_your_mom/change_task.html',
-                  {'task': task})
+                  {'task_id': task_id,
+                   'task_name': task_name,
+                   'task_description': task_description,
+                   'task_due': task_due,
+                   'new': task is None})
 
 
 @needs_login

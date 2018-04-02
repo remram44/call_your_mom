@@ -24,7 +24,7 @@ class Task(models.Model):
     user = models.ForeignKey(CYMUser, on_delete=models.CASCADE)
     name = models.CharField(max_length=80)
     description = models.CharField(max_length=280)
-    created = models.DateTimeField()
+    created = models.DateTimeField(auto_now_add=True)
     due = models.DateField()
 
 
@@ -34,4 +34,4 @@ class TaskDone(models.Model):
 
     task = models.ForeignKey(Task, on_delete=models.CASCADE)
     done = models.DateField()
-    recorded = models.DateTimeField()
+    recorded = models.DateTimeField(auto_now_add=True)
