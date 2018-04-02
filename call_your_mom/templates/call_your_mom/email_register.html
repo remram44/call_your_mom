@@ -1,0 +1,13 @@
+{% extends "call_your_mom/email_base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+
+  <p>{% trans "Someone requested an account for Call Your Mom using this email address. You can use the link below to log in:" %}</p>
+
+  <p>{{ link }}</p>
+
+  <p>{% trans "If this wasn't you, feel free to ignore this message." %}</p>
+
+{% endblock %}

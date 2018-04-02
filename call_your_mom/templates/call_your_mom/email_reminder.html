@@ -1,0 +1,15 @@
+{% extends "call_your_mom/email_base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+
+  <p>{% trans "You asked to be reminded of this task by Call Your mom." %}</p>
+
+  <p>{{ description }}</p>
+
+  <p><a href="{{ link }}">{% trans "Follow this link to mark this as done and prime the next reminder" %}</a></p>
+
+  <p>{% blocktrans %}This email was sent because you signed up for Call Your Mom. If you no longer with to receive those emails, you may delete your account at any time.{% endblocktrans %}</p>
+
+{% endblock %}
