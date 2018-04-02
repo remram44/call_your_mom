@@ -18,9 +18,9 @@
     <p>{% trans "Due:" context "task form" %} <input type="date" name="due" value="{{ task_due.isoformat }}"/></p>
     <p>
       {% if new %}
-      <input type="submit" value="{% trans "Save" context "change task" %}"/>
-      {% else %}
       <input type="submit" value="{% trans "Create" context "new task" %}"/>
+      {% else %}
+      <input type="submit" value="{% trans "Save" context "change task" %}"/>
       {% endif %}
     </p>
   </form>

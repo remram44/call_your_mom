@@ -43,6 +43,7 @@ msgid "Due:"
 msgstr "Échéance :"
 
 #: templates/call_your_mom/ack_task.html:15
+msgctxt "ack form"
 msgid "Save"
 msgstr "Valider"
 
@@ -79,14 +80,14 @@ msgid "Interval (days):"
 msgstr "Intervalle (jours) :"
 
 #: templates/call_your_mom/change_task.html:21
-msgctxt "change task"
-msgid "Save"
-msgstr "Valider"
-
-#: templates/call_your_mom/change_task.html:23
 msgctxt "new task"
 msgid "Create"
 msgstr "Créer"
+
+#: templates/call_your_mom/change_task.html:23
+msgctxt "change task"
+msgid "Save"
+msgstr "Valider"
 
 #: templates/call_your_mom/confirm.html:7
 msgid "Thank you for using Call Your Mom!"
