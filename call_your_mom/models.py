@@ -26,6 +26,7 @@ class Task(models.Model):
     description = models.CharField(max_length=280)
     created = models.DateTimeField(auto_now_add=True)
     due = models.DateField()
+    reminded = models.DateField(null=True)
 
 
 class TaskDone(models.Model):
