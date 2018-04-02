@@ -2,6 +2,7 @@ import datetime
 from django.core.mail import send_mail
 from django.core.management.base import BaseCommand
 from django.urls import reverse
+from django.utils.translation import gettext as _
 
 from website import settings
 from ...auth import make_login_link
@@ -40,13 +41,13 @@ class Command(BaseCommand):
                 link = make_login_link(task.user.id, link)
 
                 send_mail(
-                    subject="Reminder - {0}".format(task.name),
-                    message="You asked to be reminded of this task by Call "
-                            "Your Mom.\n\n"
-                            "{0}\n\n"
-                            "Follow this link to mark this as done and prime "
-                            "the next reminder:\n    {1}\n".format(
+                    subject=_("Reminder - {0}").format(task.name),
+                    message="{0}\n\n{1}\n\n{2}\n{3}".format(
+                        _("You asked to be reminded of this task by Call "
+                          "Your Mom."),
                         task.description,
+                        _("Follow this link to mark this as done and prime "
+                          "the next reminder:"),
                         link,
                     ),
                     from_email=settings.EMAIL_FROM,

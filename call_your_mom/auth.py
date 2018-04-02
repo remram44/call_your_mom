@@ -6,6 +6,7 @@ from django.core.signing import Signer
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.utils.deprecation import MiddlewareMixin
+from django.utils.translation import gettext as _
 import functools
 import urllib.parse
 
@@ -73,11 +74,12 @@ def send_login_email(user, path='/'):
 
     send_mail(
         subject="Log in to Call Your mom",
-        message="Someone requested a login link for call your mom. You "
-                "can use the link below to log in:\n"
-                "\n{0}\n\n"
-                "If this wasn't you, feel free to ignore this "
-                "message.".format(link),
+        message="{0}\n\n{1}\n\n{2}".format(
+            _("Someone requested a login link for Call Your Mom. You can use "
+              "the link below to log in:"),
+            link,
+            _("If this wasn't you, feel free to ignore this message."),
+        ),
         from_email=settings.EMAIL_FROM,
         recipient_list=[user.email],
     )
@@ -88,11 +90,12 @@ def send_register_email(user):
 
     send_mail(
         subject="Register for Call Your mom",
-        message="Someone requested an account for call your mom using this "
-                "email address. You can use the link below to log in:\n"
-                "\n{0}\n\n"
-                "If this wasn't you, feel free to ignore this "
-                "message.".format(link),
+        message="{0}\n\n{1}\n\n{2}".format(
+            _("Someone requested an account for Call Your Mom using this "
+              "email address. You can use the link below to log in:"),
+            link,
+            _("If this wasn't you, feel free to ignore this message."),
+        ),
         from_email=settings.EMAIL_FROM,
         recipient_list=[user.email],
     )
