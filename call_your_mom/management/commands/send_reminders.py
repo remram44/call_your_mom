@@ -1,6 +1,7 @@
 import datetime
 from django.core.mail import send_mail
 from django.core.management.base import BaseCommand
+from django.template.loader import render_to_string
 from django.urls import reverse
 from django.utils.translation import gettext as _
 
@@ -50,6 +51,11 @@ class Command(BaseCommand):
                           "the next reminder:"),
                         link,
                     ),
+                    html_message=render_to_string(
+                        'call_your_mom/email_reminder.html',
+                        {'name': task.name,
+                         'description': task.description,
+                         'link': link}),
                     from_email=settings.EMAIL_FROM,
                     recipient_list=[task.user.email],
                 )

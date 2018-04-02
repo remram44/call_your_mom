@@ -4,6 +4,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.core.mail import send_mail
 from django.core.signing import Signer
 from django.shortcuts import redirect
+from django.template.loader import render_to_string
 from django.urls import reverse
 from django.utils.deprecation import MiddlewareMixin
 from django.utils.translation import gettext as _
@@ -80,6 +81,9 @@ def send_login_email(user, path='/'):
             link,
             _("If this wasn't you, feel free to ignore this message."),
         ),
+        html_message=render_to_string('call_your_mom/email_login.html', {
+            'link': link,
+        }),
         from_email=settings.EMAIL_FROM,
         recipient_list=[user.email],
     )
@@ -96,6 +100,9 @@ def send_register_email(user):
             link,
             _("If this wasn't you, feel free to ignore this message."),
         ),
+        html_message=render_to_string('call_your_mom/email_register.html', {
+            'link': link,
+        }),
         from_email=settings.EMAIL_FROM,
         recipient_list=[user.email],
     )
