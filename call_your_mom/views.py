@@ -261,4 +261,7 @@ def set_lang(request, lang):
     """
     translation.activate(lang)
     request.session[translation.LANGUAGE_SESSION_KEY] = lang
+    if request.cym_user:
+        request.cym_user.language = lang
+        request.cym_user.save()
     return redirect('index', permanent=False)

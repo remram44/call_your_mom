@@ -3,6 +3,7 @@ from django.core.mail import send_mail
 from django.core.management.base import BaseCommand
 from django.template.loader import render_to_string
 from django.urls import reverse
+from django.utils import translation
 from django.utils.translation import gettext as _
 
 from website import settings
@@ -38,6 +39,7 @@ class Command(BaseCommand):
                         task.user.email,
                         task.name)))
 
+                translation.activate(task.user.language)
                 link = reverse('ack_task', kwargs=dict(task_id=task.id))
                 link = make_login_link(task.user.id, link)
 
