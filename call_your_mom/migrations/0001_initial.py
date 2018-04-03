@@ -15,7 +15,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='CYMUser',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(auto_created=True, primary_key=True,
+                                        serialize=False, verbose_name='ID')),
                 ('email', models.CharField(db_index=True, max_length=200)),
                 ('created', models.DateTimeField(auto_now_add=True)),
                 ('last_login', models.DateTimeField(null=True)),
@@ -28,24 +29,32 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Task',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('type', models.CharField(choices=[('normal', 'normal'), ('exact', 'exact')], max_length=8)),
+                ('id', models.AutoField(auto_created=True, primary_key=True,
+                                        serialize=False, verbose_name='ID')),
+                ('type', models.CharField(
+                    choices=[('normal', 'normal'), ('exact', 'exact')],
+                    max_length=8)),
                 ('name', models.CharField(max_length=80)),
                 ('description', models.CharField(max_length=280)),
                 ('created', models.DateTimeField(auto_now_add=True)),
                 ('interval_days', models.IntegerField()),
                 ('due', models.DateField()),
                 ('reminded', models.DateField(null=True)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='call_your_mom.CYMUser')),
+                ('user', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE,
+                    to='call_your_mom.CYMUser')),
             ],
         ),
         migrations.CreateModel(
             name='TaskDone',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(auto_created=True, primary_key=True,
+                                        serialize=False, verbose_name='ID')),
                 ('done', models.DateField()),
                 ('recorded', models.DateTimeField(auto_now_add=True)),
-                ('task', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='call_your_mom.Task')),
+                ('task', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE,
+                    to='call_your_mom.Task')),
             ],
             options={
                 'verbose_name_plural': 'Tasks done',

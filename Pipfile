@@ -9,6 +9,7 @@ django-model-utils = "~=3.1.0"
 python-dateutil = "~=2.7"
 
 [dev-packages]
+"flake8" = "*"
 
 [requires]
 python_version = "3.6"
