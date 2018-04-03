@@ -16,9 +16,9 @@ def index(request):
     """Website index, redirects either to landing page or profile.
     """
     if request.cym_user is not None:
-        return redirect('profile', permanent=False)
+        return redirect('profile')
     else:
-        return redirect('landing', permanent=False)
+        return redirect('landing')
 
 
 def landing(request):
@@ -239,7 +239,7 @@ def delete_task(request, task_id):
     messages.add_message(request, messages.INFO,
                          _("Task deleted"))
 
-    return redirect('profile', permanent=False)
+    return redirect('profile')
 
 
 @needs_login
@@ -313,4 +313,4 @@ def set_lang(request, lang):
     if request.cym_user:
         request.cym_user.language = lang
         request.cym_user.save()
-    return redirect('index', permanent=False)
+    return redirect('index')
