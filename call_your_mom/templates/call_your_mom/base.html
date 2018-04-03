@@ -10,7 +10,7 @@
 <body>
 <div class="container">
   <div class="page-header">
-    <h1><i class="fas fa-phone-volume"></i> CALL! YOUR! MOM!</h1>      
+    <h1><i class="fas fa-phone-volume"></i> CALL! YOUR! MOM!</h1>
     <hr/>
   </div>
 
@@ -24,9 +24,8 @@
 
   <footer>
   <hr/>
-  {% with project_url="https://github.com/remram44/call_your_mom" %}{% blocktrans %}The source code for Call Your Mom is available via <a href="{{ project_url }}">github</a>. It is licensed under a modified BSD license, found in the <a href="https://github.com/remram44/call_your_mom/blob/master/LICENSE.txt">LICENSE.txt</a> file in the repository.
-  <br/>View this website in: 
-  {% endblocktrans %}{% endwith %}
+  {% with project_url="https://github.com/remram44/call_your_mom" %}{% blocktrans %}The source code for Call Your Mom is available via <a href="{{ project_url }}">github</a>. It is licensed under a modified BSD license, found in the <a href="https://github.com/remram44/call_your_mom/blob/master/LICENSE.txt">LICENSE.txt</a> file in the repository.{% endblocktrans %}{% endwith %}
+  <br/>{% trans "View this website in:" %}
   {% get_available_languages as LANGUAGES %}
   {% get_language_info_list for LANGUAGES as languages %}
   {% for language in languages %}

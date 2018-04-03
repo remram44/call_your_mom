@@ -9,7 +9,7 @@
   <form class="form-inline" action="{% url 'login' %}?path={{ path }}" method="post">
     {% csrf_token %}
     {% blocktrans %}Just enter your email, and click the link we'll send you to start adding tasks:{% endblocktrans %}
-    <label class="sr-only" for="email">Email Address</label>
+    <label class="sr-only" for="email">{% trans "Email Address" %}</label>
     <input name="email" type="email" id="email" placeholder="email@email.com">
     <input type="submit" class="btn btn-info" value="{% trans "Go" context "Submit button for email registration" %}"/>
   </form>
