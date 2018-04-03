@@ -14,6 +14,7 @@ class CYMUser(models.Model):
     language = models.CharField(max_length=10, default='en')
     last_login = models.DateTimeField(null=True)
     last_login_email = models.DateTimeField()
+    timezone = models.CharField(max_length=100, default='UTC')
 
     def __str__(self):
         return "<CYMUser id={0} email={1}>".format(self.id, self.email)
