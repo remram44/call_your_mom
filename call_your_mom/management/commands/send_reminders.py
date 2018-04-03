@@ -24,17 +24,9 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         now = datetime.date.today()
         for task in Task.objects.all():
-            self.stdout.write(self.style.NOTICE("Time now: {0}".format(now.isoformat())))
-            self.stdout.write(self.style.NOTICE(
-                "Task {0} due {1}. Is due: {2}, was reminded: {3}".format(
-                    task.name, task.due.isoformat(),
-                    "yes" if task.due <= now else "no",
-                    "no" if (not task.reminded or task.reminded < task.due)
-                    else "yes"
-                )))
             if (task.due <= now and
                     (not task.reminded or task.reminded < task.due)):
-                self.stdout.write(self.style.SUCCESS(
+                self.stderr.write(self.style.SUCCESS(
                     "Sending email to {0} for task {1}".format(
                         task.user.email,
                         task.name)))
