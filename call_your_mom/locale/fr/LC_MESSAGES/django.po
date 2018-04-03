@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-02 12:06-0400\n"
-"PO-Revision-Date: 2018-04-02 12:07-0400\n"
+"POT-Creation-Date: 2018-04-03 14:37-0400\n"
+"PO-Revision-Date: 2018-04-03 14:38-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 2.0.4\n"
 
-#: auth.py:78 templates/call_your_mom/email_login.html:7
+#: auth.py:82 templates/call_your_mom/email_login.html:7
 msgid ""
 "Someone requested a login link for Call Your Mom. You can use the link below "
 "to log in:"
@@ -26,12 +26,12 @@ msgstr ""
 "Quelqu'un a demandé un lien pour se connecter à Call Your Mom. Vous pouvez "
 "utilisez le lien ci-dessous pour vous connecter :"
 
-#: auth.py:81 auth.py:97 templates/call_your_mom/email_login.html:11
+#: auth.py:85 auth.py:110 templates/call_your_mom/email_login.html:11
 #: templates/call_your_mom/email_register.html:11
 msgid "If this wasn't you, feel free to ignore this message."
 msgstr "Si ce n'était pas vous, vous pouvez ignorer ce message."
 
-#: auth.py:94 templates/call_your_mom/email_register.html:7
+#: auth.py:107 templates/call_your_mom/email_register.html:7
 msgid ""
 "Someone requested an account for Call Your Mom using this email address. You "
 "can use the link below to log in:"
@@ -39,26 +39,26 @@ msgstr ""
 "Quelqu'un a demandé la création d'un compte sur Call Your Mom avec cette "
 "addresse email. Vous pouvez utilisez le lien ci-dessous pour vous connecter :"
 
-#: management/commands/send_reminders.py:44
+#: management/commands/send_reminders.py:32
 #, python-brace-format
 msgid "Reminder - {0}"
 msgstr "Rappel - {0}"
 
-#: management/commands/send_reminders.py:46
+#: management/commands/send_reminders.py:34
 msgid "You asked to be reminded of this task by Call Your Mom."
 msgstr "Tu as demandé à être rappelé de cette tâche par Call Your Mom."
 
-#: management/commands/send_reminders.py:49
+#: management/commands/send_reminders.py:37
 msgid "Follow this link to mark this as done and prime the next reminder:"
 msgstr ""
 "Suis ce lien pour marquer cette tâche effectuée et engager le prochain "
 "rappel :"
 
-#: models.py:22
+#: models.py:23
 msgid "normal"
 msgstr "normal"
 
-#: models.py:22
+#: models.py:23
 msgid "exact"
 msgstr "exact"
 
@@ -72,55 +72,64 @@ msgctxt "task form"
 msgid "Done on:"
 msgstr "Effectuée le :"
 
-#: templates/call_your_mom/ack_task.html:14
-#: templates/call_your_mom/change_task.html:18
+#: templates/call_your_mom/ack_task.html:17
+#: templates/call_your_mom/change_task.html:34
 msgctxt "task form"
 msgid "Due:"
 msgstr "Échéance :"
 
-#: templates/call_your_mom/ack_task.html:15
+#: templates/call_your_mom/ack_task.html:20
 msgctxt "ack form"
 msgid "Save"
 msgstr "Valider"
 
-#: templates/call_your_mom/base.html:19
+#: templates/call_your_mom/base.html:27
 #, python-format
 msgid ""
-"Call Your Mom sources available on <a href=\"%(project_url)s\">github.com</a>"
+"The source code for Call Your Mom is available via <a href=\"%(project_url)s"
+"\">github</a>. It is licensed under a modified BSD license, found in the <a "
+"href=\"https://github.com/remram44/call_your_mom/blob/master/LICENSE.txt"
+"\">LICENSE.txt</a> file in the repository."
 msgstr ""
-"Code source de Call Your Mom accessibles sur <a href=\"%(project_url)s"
-"\">github.com</a>"
+"Le code source de Call Your Mom est accessible sur <a href=\"%(project_url)s"
+"\">github</a>. Il est sous licence BSD modifiée, située dans le fichier <a "
+"href=\"https://github.com/remram44/call_your_mom/blob/master/LICENSE.txt"
+"\">LICENSE.txt</a> dans le dépôt."
+
+#: templates/call_your_mom/base.html:28
+msgid "View this website in:"
+msgstr "Consulter ce site en :"
 
 #: templates/call_your_mom/change_task.html:8
-msgid "Create a task"
-msgstr "Créer une tâche"
+msgid "Create a task:"
+msgstr "Créer une tâche :"
 
 #: templates/call_your_mom/change_task.html:10
 #, python-format
 msgid "Edit task: %(task_name)s"
 msgstr "Modification d'une tâche : %(task_name)s"
 
-#: templates/call_your_mom/change_task.html:15
+#: templates/call_your_mom/change_task.html:16
 msgctxt "task form"
 msgid "Name:"
 msgstr "Nom :"
 
-#: templates/call_your_mom/change_task.html:16
+#: templates/call_your_mom/change_task.html:22
 msgctxt "task form"
 msgid "Description:"
 msgstr "Description :"
 
-#: templates/call_your_mom/change_task.html:17
+#: templates/call_your_mom/change_task.html:28
 msgctxt "task form"
 msgid "Interval (days):"
 msgstr "Intervalle (jours) :"
 
-#: templates/call_your_mom/change_task.html:21
+#: templates/call_your_mom/change_task.html:40
 msgctxt "new task"
 msgid "Create"
 msgstr "Créer"
 
-#: templates/call_your_mom/change_task.html:23
+#: templates/call_your_mom/change_task.html:42
 msgctxt "change task"
 msgid "Save"
 msgstr "Valider"
@@ -130,8 +139,8 @@ msgid "Thank you for using Call Your Mom!"
 msgstr "Merci d'utiliser Call Your Mom !"
 
 #: templates/call_your_mom/confirm.html:9
-msgid "Back to the index"
-msgstr "Retour à l'accueil"
+msgid "Back to the home page"
+msgstr "Retour à la page d'accueil"
 
 #: templates/call_your_mom/email_reminder.html:7
 msgid "You asked to be reminded of this task by Call Your mom."
@@ -154,110 +163,117 @@ msgstr ""
 #: templates/call_your_mom/landing.html:6
 msgid ""
 "\n"
-"  <h1>Welcome!</h1>\n"
-"  <p>This is a web application meant to remind you to do some periodic tasks."
+"\n"
+"  <h1>What is this website for?</h1>\n"
+"  <p>Folks use things like lists, boards (Trello or white!), or bug trackers "
+"to organize tasks. Others tend to treat their inbox as a job queue or to-do "
+"list as well. However, none of those systems are meant for tasks that need "
+"to happen again and again.</p>\n"
+"  <p>Sometimes, we don't know how far in advance it would be a good time to "
+"do one of those tasks again. It's a hassle to keep postponing the task in a "
+"calendar, and if you miss the notification, there is the risk it will never "
+"remind us about it again.</p>\n"
+"  <p>After signing up with your email, you can set tasks that should be done "
+"every X number of days. The system will remind you when it is time! You can "
+"set any task name, description, and interval (every two weeks, etc.). By "
+"clicking the link in the reminder email, you can set the next time it is due."
 "</p>\n"
 "\n"
-"  <h2>What?</h2>\n"
-"  <p>After signing up with your email, you can set tasks that should be done "
-"every N days, and the system will remind you when it is time. You can set "
-"any task name, description, and interval. By clicking the link in the email, "
-"you can set the next time it should be done.</p>\n"
-"\n"
-"  <h2>What can I use this for?</h2>\n"
-"\n"
-"  <p>There are two types of tasks:</p>\n"
-"  <ul>\n"
-"    <li>The ones that should not be forgotten too long (like calling your "
-"mom. If you call her before being reminded, or she calls you, good for you. "
-"The reminder will start counting down from that date, so the reminder date "
-"changes).\n"
-"    <br/>Examples:\n"
+"  <h1>What can I use this for?</h1>\n"
+"    <h3>Tasks that should not be forgotten too long <small>like calling your "
+"mom.</small></h3>\n"
+"      <p>If you call her before being reminded, or she calls you, good for "
+"you. The reminder will start counting down from that date, so the reminder "
+"date changes. This works for other tasks like:</p>\n"
 "      <ul>\n"
 "        <li><a href=\"https://www.duplicati.com/\">Backup your computer</a> "
-"and phone</li>\n"
-"        <li>Clean the floors</li>\n"
-"        <li>Write a blog post</li>\n"
-"        <li>Date night</li>\n"
-"        <li>Schedule a meeting for your project</li>\n"
-"        <li>Call your mom!</li>\n"
+"and phone once a week</li>\n"
+"        <li>Clean the floors once every two weeks</li>\n"
+"        <li>Write a blog post once a month</li>\n"
+"        <li>Date night every other day</li>\n"
+"        <li>Schedule a meeting for your project every 15 days</li>\n"
+"        <li>Call your mom more!</li>\n"
 "      </ul>\n"
-"    </li>\n"
-"    <li>The ones that need to happen on a specific day exactly (like things "
-"you only do on weekends, or on Wednesdays, or the first day of the month). "
-"No matter when you acknowledge the reminder, the system will keep to the "
-"initial schedule.\n"
-"    <br/>Examples:\n"
+"\n"
+"      <h3>Tasks that need to happen on a specific day <small>like on "
+"Wednesdays, the weekend, or the 1st of the month</small></h3>\n"
+"      <p>No matter when you acknowledge the reminder, the system will keep "
+"to the initial schedule. Example:</p>\n"
 "      <ul>\n"
-"        <li>Team meeting</li>\n"
+"        <li>Make slides before the class every Thursday</li>\n"
+"        <li>Team meeting before the end of the month</li>\n"
+"        <li>Food coop shift on the third weekend of the month</li>\n"
+"        <li>New X-Files episodes every Wednesday</li>\n"
 "        <li>Play the <a href=\"http://nuclearthrone.com/\">Nuclear Throne</"
-"a> weeklies</li>\n"
+"a> weeklies on weekends</li>\n"
 "      </ul>\n"
-"    </li>\n"
-"  </ul>\n"
+"\n"
 "  "
 msgstr ""
 "\n"
-"  <h1>Bienvenue!</h1>\n"
-"  <p>Cette application sert à te rappeler d'effectuer des tâches qui se "
-"répètent dans le temps.</p>\n"
 "\n"
-"  <h2>Quoi ?</h2>\n"
-"  <p>Après t'être enregistré en nous fournissant ton addresse email, tu peux "
-"ajouter des tâches qui doivent être effectuées tous les N jours et le "
-"système te rappellera quand il est temps. Tu peux choisir le nom, la "
-"description et l'intervalle de temps de chaque tâche. En cliquant sur le "
-"lien dans l'email, tu peux choisir la prochaine fois qu'elle doit être "
-"accomplie.</p>\n"
+"  <h1>À quoi sert ce site ?</h1>\n"
+"  <p>Les gens aiment bien utiliser des listes, tableaux (blancs ou Kanban !) "
+"ou bug trackers pour organiser des tâches. D'autres ont tendance à utiliser "
+"leur boîte email comme une file d'attente ou une liste de tâche. Cependant, "
+"aucun système n'est prévu pour les tâches qui doivent être répétées encore "
+"et encore.</p>\n"
+"  <p>Des fois, on ne sait pas en avance quand sera un bon moment pour "
+"effectuer une de ces tâches. Reporter sans cesse un évènement dans son "
+"calendrier est pénible, et il y a aussi le risque de rater une notification, "
+"et jamais recevoir un autre rappel.</p>\n"
+"  <p>Après avoir créé un compte avec votre email, tu pourras ajouter des "
+"tâches qui doivent être accomplie tous les X jours. Le système te rappellera "
+"quand il est temps ! Tu peux entrer n'importe quel nom, description et "
+"intervalle de temps (toutes les deux semaines, etc). Quand tu cliques le "
+"lien dans l'email de rappel, tu peux choisir la prochaine échéance.</p>\n"
 "\n"
-"  <h2>Qu'est-ce que je peux faire avec ça ?</h2>\n"
-"\n"
-"  <p>Il y a deux types de tâches :</p>\n"
-"  <ul>\n"
-"    <li>Celles qui ne doivent pas être oubliées trop longtemps (comme "
-"appeler ta mère. Si tu l'appelles avant d'être rappelé par email, ou si elle "
-"t'appelle, tant mieux. Le rappel commencera à compter à partir de cette "
-"date, et donc la date des rappels change).\n"
-"    <br/>Exemples :\n"
+"  <h1>Qu'est-ce que je peux faire avec ça ?</h1>\n"
+"    <h3>Les tâches qui ne doivent pas être oubliées trop longtemps "
+"<small>comme appeler ta mère.</small></h3>\n"
+"      <p>Si tu l'appelles avant l'email de rappel, ou si elle t'appelle, "
+"tant mieux. Le rappel commencera à compte à partir de cette date, et donc la "
+"date des rappels change. Ça marche aussi avec d'autres tâches comme :</p>\n"
 "      <ul>\n"
-"        <li><a href=\"https://www.duplicati.com/\">Faites une sauvegarde de "
-"votre ordinateur</a> et smartphone</li>\n"
-"        <li>Nettoyer les sols</li>\n"
-"        <li>Écrire un billet de blog</li>\n"
-"        <li>Sortir avec la petite amie</li>\n"
-"        <li>Prévoir un meeting pour votre projet</li>\n"
-"        <li>Appeler ta mère !</li>\n"
+"        <li><a href=\"https://www.duplicati.com/\">Faire une sauvegarde de "
+"ton ordinateur</a> et téléphone toutes les semaines</li>\n"
+"        <li>Nettoyer les sols toutes les deux semaines</li>\n"
+"        <li>Écrire un billet de blog une fois par mois</li>\n"
+"        <li>Sortir avec la petite amie tous les 3-4 jours</li>\n"
+"        <li>Prévoir un meeting pour ton projet tous les 15 jours</li>\n"
+"        <li>Appeler ta mère plus souvent !</li>\n"
 "      </ul>\n"
-"    </li>\n"
-"    <li>Celles qui doivent être effectuées un jour précis (comme les choses "
-"que tu ne fais que le week-end, ou que les mercredi, ou uniquement les "
-"premiers jours du mois). Quelque soit la date à laquelle tu cliques sur le "
-"rappel, le système se tiendra au programme initial.\n"
-"    <br/>Exemples :\n"
+"\n"
+"      <h3>Les tâches qui doivent être effectuées un jour précis <small>comme "
+"le mercredi, le week-end, ou 1er du mois</small></h3>\n"
+"      <p>Quelque soit la date à laquelle tu cliques sur le rappel, le "
+"système se tiendra au programme initial. Par exemple :</p>\n"
 "      <ul>\n"
-"        <li>Meeting avec l'équipe (le jour où tout le monde est là)</li>\n"
-"        <li>Jour aux weeklies de <a href=\"http://nuclearthrone.com/"
-"\">Nuclear Throne</a> (le week-end)</li>\n"
+"        <li>Préparer des slides avant le cours le jeudi</li>\n"
+"        <li>Meeting avec l'équipe avant la fin du mois</li>\n"
+"        <li>Travailler à la coop le troisiéme week-end du mois</li>\n"
+"        <li>Nouvel épisode d'X-Files tous les mercredis</li>\n"
+"        <li>Jouer à la weekly de <a href=\"http://nuclearthrone.com/"
+"\">Nuclear Throne</a> le week-end</li>\n"
 "      </ul>\n"
-"    </li>\n"
-"  </ul>\n"
+"\n"
 "  "
 
-#: templates/call_your_mom/landing.html:38
+#: templates/call_your_mom/landing.html:37
 msgid "Where do I sign up?"
 msgstr "Où est-ce que je m'inscris ?"
 
-#: templates/call_your_mom/landing.html:42
-#: templates/call_your_mom/register.html:11
+#: templates/call_your_mom/landing.html:41
 msgid ""
-"Just enter your email, and click the link we'll send you to start adding "
-"tasks:"
+"When you submit your email here, we'll send you a link you can use to start "
+"adding tasks:"
 msgstr ""
 "Entre ton addresse email et clique le lien qu'on t'envoie pour commencer à "
 "ajouter des tâches :"
 
-#: templates/call_your_mom/landing.html:44
-#: templates/call_your_mom/register.html:13
+#: templates/call_your_mom/landing.html:43
+#: templates/call_your_mom/login.html:14
+#: templates/call_your_mom/register.html:14
 msgctxt "Submit button for email registration"
 msgid "Go"
 msgstr "Ok"
@@ -267,14 +283,18 @@ msgid "Log in"
 msgstr "Se connecter"
 
 #: templates/call_your_mom/login.html:11
-msgid "Just enter your email, and click the link we'll send you to log in:"
+#: templates/call_your_mom/register.html:11
+msgid ""
+"Just enter your email, and click the link we'll send you to start adding "
+"tasks:"
 msgstr ""
-"Entre ton addresse email et clique le lien qu'on t'envoie pour te connecter :"
+"Entre ton addresse email et clique le lien qu'on t'envoie pour commencer à "
+"ajouter des tâches :"
 
-#: templates/call_your_mom/login.html:13
-msgctxt "Submit button for login"
-msgid "Go"
-msgstr "Ok"
+#: templates/call_your_mom/login.html:12
+#: templates/call_your_mom/register.html:12
+msgid "Email Address"
+msgstr "Addresse email"
 
 #: templates/call_your_mom/profile.html:8
 #, python-format
@@ -282,48 +302,48 @@ msgid "Settings for <em>%(email)s</em>"
 msgstr "Configuration pour <em>%(email)s</em>"
 
 #: templates/call_your_mom/profile.html:13
-msgid "Those are the tasks you have set up:"
-msgstr "Voici les tâches que tu as créées :"
+msgid "Here are your tasks:"
+msgstr "Voici vos tâches :"
 
-#: templates/call_your_mom/profile.html:17
+#: templates/call_your_mom/profile.html:18
 msgid "Name"
 msgstr "Nom"
 
-#: templates/call_your_mom/profile.html:18
+#: templates/call_your_mom/profile.html:19
 msgid "Type"
 msgstr "Type"
 
-#: templates/call_your_mom/profile.html:19
+#: templates/call_your_mom/profile.html:20
 msgid "Created"
 msgstr "Créée"
 
-#: templates/call_your_mom/profile.html:20
+#: templates/call_your_mom/profile.html:21
 msgid "Interval"
 msgstr "Intervalle"
 
-#: templates/call_your_mom/profile.html:21
+#: templates/call_your_mom/profile.html:22
 msgid "Due"
 msgstr "Échéance"
 
-#: templates/call_your_mom/profile.html:32
-msgid "edit"
-msgstr "modifier"
+#: templates/call_your_mom/profile.html:35
+msgid "Edit task"
+msgstr "Modifier cette tâche"
 
-#: templates/call_your_mom/profile.html:33
-msgid "delete"
-msgstr "supprimer"
+#: templates/call_your_mom/profile.html:36
+msgid "Delete task"
+msgstr "Supprimer cette tâche"
 
-#: templates/call_your_mom/profile.html:38
+#: templates/call_your_mom/profile.html:41
 msgid "No task yet"
 msgstr "Aucune tâche pour l'instant"
 
-#: templates/call_your_mom/profile.html:42
+#: templates/call_your_mom/profile.html:45
 msgid "Add a task"
 msgstr "Créer une tâche"
 
 #: templates/call_your_mom/register.html:7
-msgid "Signing up"
-msgstr "Inscription"
+msgid "Sign up!"
+msgstr "Inscris-toi !"
 
 #: views.py:37 views.py:82
 msgid "Please provide an email address"
