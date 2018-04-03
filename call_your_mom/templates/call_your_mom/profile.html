@@ -13,36 +13,38 @@
   <p>{% blocktrans %}Here are your tasks:{% endblocktrans %}</p>
 
   <table class="table table-striped">
-		<thead>
-    <tr>
-      <th>{% trans "Name" %}</th>
-      <th>{% trans "Type" %}</th>
-      <th>{% trans "Created" %}</th>
-      <th>{% trans "Interval" %}</th>
-      <th>{% trans "Due" %}</th>
-      <td></td>
-    </tr>
-  </thead>
-    {% for task in tasks %}
-    <tr>
-      <td>{{ task.name }}</td>
-      <td>{{ task.type }}</td>
-      <td>{{ task.created }}</td>
-      <td>{{ task.interval_days }}</td>
-      <td>{{ task.due }}</td>
-      <td>
-        <a href="{% url 'change_task' task.id %}"><i class="fas fa-edit fa-lg" title="Edit task"></i></a>
-        <a href="{% url 'delete_task' task.id %}"><i class="fas fa-trash fa-lg" title="Delete task"></i></a>
-      </td>
-    </tr>
-    {% empty %}
-    <tr>
-      <td colspan="6"><em>{% trans "No task yet" %}</em></td>
-    </tr>
-    {% endfor %}
-    <tr>
-      <td colspan="6"><a href="{% url 'change_task' 'new' %}">{% trans "Add a task" %}</a></td>
-    </tr>
+    <thead>
+      <tr>
+        <th>{% trans "Name" %}</th>
+        <th>{% trans "Type" %}</th>
+        <th>{% trans "Created" %}</th>
+        <th>{% trans "Interval" %}</th>
+        <th>{% trans "Due" %}</th>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      {% for task in tasks %}
+      <tr>
+        <td>{{ task.name }}</td>
+        <td>{{ task.type }}</td>
+        <td>{{ task.created }}</td>
+        <td>{{ task.interval_days }}</td>
+        <td>{{ task.due }}</td>
+        <td>
+          <a href="{% url 'change_task' task.id %}"><i class="fas fa-edit fa-lg" title="Edit task"></i></a>
+          <a href="{% url 'delete_task' task.id %}"><i class="fas fa-trash fa-lg" title="Delete task"></i></a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="6"><em>{% trans "No task yet" %}</em></td>
+      </tr>
+      {% endfor %}
+      <tr>
+        <td colspan="6"><a href="{% url 'change_task' 'new' %}">{% trans "Add a task" %}</a></td>
+      </tr>
+    </tbody>
   </table>
 
 {% endblock %}
