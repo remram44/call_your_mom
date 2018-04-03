@@ -1,5 +1,8 @@
 # Call Your Mom!
 
+[![CircleCI badge](https://img.shields.io/circleci/project/github/remram44/call_your_mom/master.svg)](https://circleci.com/gh/remram44/call_your_mom/tree/master)
+[![Say Thanks!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/remram44)
+
 This is a web application meant to remind you to do some periodic tasks.
 
 After signing up with your email, you can set tasks that should be done every N days, and the system will remind you when it is time. By clicking the link in the email, you can set the next time it should be done.
