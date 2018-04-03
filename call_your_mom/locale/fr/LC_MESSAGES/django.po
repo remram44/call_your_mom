@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-03 14:54-0400\n"
-"PO-Revision-Date: 2018-04-03 14:56-0400\n"
+"POT-Creation-Date: 2018-04-03 17:39-0400\n"
+"PO-Revision-Date: 2018-04-03 17:40-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 2.0.4\n"
 
-#: auth.py:82 templates/call_your_mom/email_login.html:7
+#: auth.py:87 templates/call_your_mom/email_login.html:7
 msgid ""
 "Someone requested a login link for Call Your Mom. You can use the link below "
 "to log in:"
@@ -26,12 +26,12 @@ msgstr ""
 "Quelqu'un a demandé un lien pour se connecter à Call Your Mom. Vous pouvez "
 "utilisez le lien ci-dessous pour vous connecter :"
 
-#: auth.py:85 auth.py:110 templates/call_your_mom/email_login.html:11
+#: auth.py:90 auth.py:115 templates/call_your_mom/email_login.html:11
 #: templates/call_your_mom/email_register.html:11
 msgid "If this wasn't you, feel free to ignore this message."
 msgstr "Si ce n'était pas vous, vous pouvez ignorer ce message."
 
-#: auth.py:107 templates/call_your_mom/email_register.html:7
+#: auth.py:112 templates/call_your_mom/email_register.html:7
 msgid ""
 "Someone requested an account for Call Your Mom using this email address. You "
 "can use the link below to log in:"
@@ -39,26 +39,26 @@ msgstr ""
 "Quelqu'un a demandé la création d'un compte sur Call Your Mom avec cette "
 "addresse email. Vous pouvez utilisez le lien ci-dessous pour vous connecter :"
 
-#: management/commands/send_reminders.py:32
+#: management/commands/send_reminders.py:34
 #, python-brace-format
 msgid "Reminder - {0}"
 msgstr "Rappel - {0}"
 
-#: management/commands/send_reminders.py:34
+#: management/commands/send_reminders.py:36
 msgid "You asked to be reminded of this task by Call Your Mom."
 msgstr "Tu as demandé à être rappelé de cette tâche par Call Your Mom."
 
-#: management/commands/send_reminders.py:37
+#: management/commands/send_reminders.py:39
 msgid "Follow this link to mark this as done and prime the next reminder:"
 msgstr ""
 "Suis ce lien pour marquer cette tâche effectuée et engager le prochain "
 "rappel :"
 
-#: models.py:23
+#: models.py:24
 msgid "normal"
 msgstr "normal"
 
-#: models.py:23
+#: models.py:24
 msgid "exact"
 msgstr "exact"
 
@@ -305,43 +305,52 @@ msgstr "Configuration pour <em>%(email)s</em>"
 msgid "Click here to log out"
 msgstr "Clique ici pour te déconnecter"
 
-#: templates/call_your_mom/profile.html:13
+#: templates/call_your_mom/profile.html:16
+msgid "Timezone:"
+msgstr "Fuseau horaire :"
+
+#: templates/call_your_mom/profile.html:22
+msgctxt "timezone"
+msgid "Change"
+msgstr "Changer"
+
+#: templates/call_your_mom/profile.html:26
 msgid "Here are your tasks:"
 msgstr "Voici vos tâches :"
 
-#: templates/call_your_mom/profile.html:18
+#: templates/call_your_mom/profile.html:31
 msgid "Name"
 msgstr "Nom"
 
-#: templates/call_your_mom/profile.html:19
+#: templates/call_your_mom/profile.html:32
 msgid "Type"
 msgstr "Type"
 
-#: templates/call_your_mom/profile.html:20
+#: templates/call_your_mom/profile.html:33
 msgid "Created"
 msgstr "Créée"
 
-#: templates/call_your_mom/profile.html:21
+#: templates/call_your_mom/profile.html:34
 msgid "Interval"
 msgstr "Intervalle"
 
-#: templates/call_your_mom/profile.html:22
+#: templates/call_your_mom/profile.html:35
 msgid "Due"
 msgstr "Échéance"
 
-#: templates/call_your_mom/profile.html:35
+#: templates/call_your_mom/profile.html:48
 msgid "Edit task"
 msgstr "Modifier cette tâche"
 
-#: templates/call_your_mom/profile.html:36
+#: templates/call_your_mom/profile.html:49
 msgid "Delete task"
 msgstr "Supprimer cette tâche"
 
-#: templates/call_your_mom/profile.html:41
+#: templates/call_your_mom/profile.html:54
 msgid "No task yet"
 msgstr "Aucune tâche pour l'instant"
 
-#: templates/call_your_mom/profile.html:45
+#: templates/call_your_mom/profile.html:58
 msgid "Add a task"
 msgstr "Créer une tâche"
 
@@ -349,11 +358,11 @@ msgstr "Créer une tâche"
 msgid "Sign up!"
 msgstr "Inscris-toi !"
 
-#: views.py:37 views.py:82
+#: views.py:39 views.py:84
 msgid "Please provide an email address"
 msgstr "Merci d'entrer une addresse email"
 
-#: views.py:64
+#: views.py:66
 #, python-brace-format
 msgid ""
 "We have sent an email to {0}. Please follow the link inside to start "
@@ -362,7 +371,7 @@ msgstr ""
 "Nous avons envoyé un email à {0}. Merci de suivre le lien à l'intérieur pour "
 "commencer à ajouter des tâches."
 
-#: views.py:95
+#: views.py:97
 #, python-brace-format
 msgid ""
 "We have sent an email to {0}, if such an account exist. Please follow the "
@@ -371,42 +380,46 @@ msgstr ""
 "Nous avons envoyé un email à {0}, si ce compte existe. Merci de suivre le "
 "lien à l'intérieur pour te connecter."
 
-#: views.py:107
+#: views.py:109
 msgid "You have been logged out."
 msgstr "Tu as été déconnecté."
 
-#: views.py:142 views.py:236 views.py:257
+#: views.py:151
+msgid "Timezone updated"
+msgstr "Fuseau horaire mis à jour"
+
+#: views.py:176 views.py:272 views.py:293
 msgid "Couldn't find this task!"
 msgstr "Impossible de trouver cette tâche !"
 
-#: views.py:154
+#: views.py:188
 msgid "Please give your task a name"
 msgstr "Merci de donner un nom à ta tâche"
 
-#: views.py:164
+#: views.py:198
 msgid "Please give your task a due date"
 msgstr "Merci d'entrer une date d'échéance"
 
-#: views.py:181
+#: views.py:216
 msgid "Please give your task an interval in days between occurrences"
 msgstr "Merci d'entrer le nombre de jours entre les échéances"
 
-#: views.py:194
+#: views.py:229
 msgid "Task updated"
 msgstr "Tâche mise à jour"
 
-#: views.py:203
+#: views.py:238
 msgid "Task created"
 msgstr "Tâche créée"
 
-#: views.py:240
+#: views.py:276
 msgid "Task deleted"
 msgstr "Tâche supprimée"
 
-#: views.py:272
+#: views.py:308
 msgid "Please enter the date you performed the task"
 msgstr "Merci d'entrer la date à laquelle tu as effectué la tâche"
 
-#: views.py:284
+#: views.py:320
 msgid "Please enter the date this task is due next"
 msgstr "Merci d'entrer la prochaine date d'échéance"
