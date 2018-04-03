@@ -10,6 +10,19 @@
 
   <p><a href="{% url 'logout' %}">{% trans "Click here to log out" %}</a></p>
 
+  <form action="{% url 'profile' %}" method="post">
+    {% csrf_token %}
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="timezone">{% trans "Timezone:" %}</label>
+      <div class="col-sm-4"><select name="timezone" id="timezone">
+        {% for tz in timezones %}
+          <option value="{{ tz.0 }}"{% if tz.0 == cym_user.timezone %} selected{% endif %}>{{ tz.0 }} ({{ tz.1 }})</option>
+        {% endfor %}
+      </select></div>
+      <div class="col-sm-2"><input type="submit" class="btn btn-info" value="{% trans "Change" context "timezone" %}"/></div>
+    </div>
+  </form>
+
   <p>{% trans "Here are your tasks:" %}</p>
 
   <table class="table table-striped">

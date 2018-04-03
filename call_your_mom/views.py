@@ -1,5 +1,7 @@
 import datetime
 import dateutil.parser
+import pytz
+import pytz.exceptions
 from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponseNotFound
@@ -114,13 +116,45 @@ def confirm(request):
     return render(request, 'call_your_mom/confirm.html')
 
 
+_now = datetime.datetime.utcnow()
+_timezones = []
+for name in pytz.common_timezones:
+    tz = pytz.timezone(name)
+    offset = tz.utcoffset(_now) - tz.dst(_now)
+    offset = orig = int(offset.total_seconds())
+
+    offset_str = '+'
+    if offset < 0:
+        offset = -offset
+        offset_str = '-'
+    offset_str = '{}{:02}:{:02}'.format(offset_str, offset // 3600, (offset // 60) % 60)
+
+    _timezones.append((orig, offset_str, name))
+_timezones = [(n, s) for (o, s, n) in sorted(_timezones)]
+
+
 @needs_login
 def profile(request):
     """A user's profile, listing all his tasks.
     """
+    if request.method == 'POST':
+        if 'timezone' in request.POST:
+            try:
+                tz = pytz.timezone(request.POST['timezone'])
+            except pytz.exceptions.UnknownTimeZoneError:
+                pass
+            else:
+                request.cym_user.timezone = tz
+                request.cym_user.save()
+                messages.add_message(
+                    request, messages.INFO,
+                    _("Timezone updated"))
+        redirect('profile')
+
     return render(request, 'call_your_mom/profile.html',
                   {'cym_user': request.cym_user,
-                   'tasks': request.cym_user.task_set.all()})
+                   'tasks': request.cym_user.task_set.all(),
+                   'timezones': _timezones})
 
 
 @needs_login
