@@ -5,7 +5,8 @@
 }
 
 footer {
-  font-size: 80%;
+  text-align:center;
+  padding-bottom:1em;
 }
 
 .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
@@ -20,4 +21,30 @@ footer {
 
 .form-inline > input {
 	margin-left:10px;
+}
+
+.alert-error {
+  color: #7d2213;
+  background-color: #fcd9d3;
+  border-color: #fbcac2;
+}
+
+.alert-error hr {
+  border-top-color: #f9b5aa;
+}
+
+.alert-error .alert-link {
+  color: #51160c;
+}
+
+.alert-error, .alert-error > th, .alert-error > td {
+  background-color: #F04124;
+}
+
+.alert > strong{
+	font-size:130%;
+}
+
+.badge-primary > a {
+	color:white;
 }

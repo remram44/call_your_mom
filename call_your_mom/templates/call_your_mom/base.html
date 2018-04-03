@@ -16,27 +16,49 @@
 
   {% if messages %}
     {% for message in messages %}
-		 <div class="alert alert-dismissible alert-info"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>{{ message }}</strong></div>
+		 <div class="alert alert-dismissible alert-{{ message.tags }}"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>{{ message }}</strong></div>
     {% endfor %}
   {% endif %}
 
   {% block content %}{% endblock %}
 
-  <footer><hr/>{% with project_url="https://github.com/remram44/call_your_mom" %}{% blocktrans %}Call Your Mom sources available on <a href="{{ project_url }}">github.com</a>{% endblocktrans %}{% endwith %}<br/>
+  <footer>
+	<hr/>
+	{% with project_url="https://github.com/remram44/call_your_mom" %}{% blocktrans %}The source code for Call Your Mom is available via <a href="{{ project_url }}">github</a>. It is licensed under a modified BSD license, found in the <a href="https://github.com/remram44/call_your_mom/blob/master/LICENSE.txt">LICENSE.txt</a> file in the repository.
+  <br/>View this website in: 
+	{% endblocktrans %}{% endwith %}
   {% get_available_languages as LANGUAGES %}
   {% get_language_info_list for LANGUAGES as languages %}
   {% for language in languages %}
     {% if language.code == LANGUAGE_CODE %}
-      {{ language.name_local }}
+      <span class="badge badge-primary">{{ language.name_local }}</span>
     {% else %}
-      <a href="{% url 'set_lang' language.code %}">
+      <span class="badge badge-secondary">
+				<a href="{% url 'set_lang' language.code %}">
           {{ language.name_local }}
-      </a>
+      	</a>
+			</span>
     {% endif %}
   {% endfor %}
+	</ul>
   </footer>
  </div>
- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> 
+ 	
+ 	<!-- Autofade alerts -->
+	<script>
+	$(".alert").fadeTo(5000, 800).slideUp(800, function(){
+    $(".alert").slideUp(800);
+	});
+	</script>
+	
 </body>
 </html>
