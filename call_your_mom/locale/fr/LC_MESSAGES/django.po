@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-03 14:37-0400\n"
-"PO-Revision-Date: 2018-04-03 14:38-0400\n"
+"POT-Creation-Date: 2018-04-03 14:54-0400\n"
+"PO-Revision-Date: 2018-04-03 14:56-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -67,18 +67,18 @@ msgstr "exact"
 msgid "Task done: %(task_name)s"
 msgstr "Tâche effectuée: %(task_name)s"
 
-#: templates/call_your_mom/ack_task.html:13
+#: templates/call_your_mom/ack_task.html:14
 msgctxt "task form"
 msgid "Done on:"
 msgstr "Effectuée le :"
 
-#: templates/call_your_mom/ack_task.html:17
+#: templates/call_your_mom/ack_task.html:18
 #: templates/call_your_mom/change_task.html:34
 msgctxt "task form"
 msgid "Due:"
 msgstr "Échéance :"
 
-#: templates/call_your_mom/ack_task.html:20
+#: templates/call_your_mom/ack_task.html:21
 msgctxt "ack form"
 msgid "Save"
 msgstr "Valider"
@@ -301,6 +301,10 @@ msgstr "Addresse email"
 msgid "Settings for <em>%(email)s</em>"
 msgstr "Configuration pour <em>%(email)s</em>"
 
+#: templates/call_your_mom/profile.html:11
+msgid "Click here to log out"
+msgstr "Clique ici pour te déconnecter"
+
 #: templates/call_your_mom/profile.html:13
 msgid "Here are your tasks:"
 msgstr "Voici vos tâches :"
@@ -371,26 +375,38 @@ msgstr ""
 msgid "You have been logged out."
 msgstr "Tu as été déconnecté."
 
-#: views.py:142 views.py:227 views.py:248
+#: views.py:142 views.py:236 views.py:257
 msgid "Couldn't find this task!"
 msgstr "Impossible de trouver cette tâche !"
 
-#: views.py:177
+#: views.py:154
 msgid "Please give your task a name"
 msgstr "Merci de donner un nom à ta tâche"
 
-#: views.py:182
-msgid "Please enter an interval"
-msgstr "Merci d'entrer un intervalle"
+#: views.py:164
+msgid "Please give your task a due date"
+msgstr "Merci d'entrer une date d'échéance"
 
-#: views.py:196
+#: views.py:181
+msgid "Please give your task an interval in days between occurrences"
+msgstr "Merci d'entrer le nombre de jours entre les échéances"
+
+#: views.py:194
 msgid "Task updated"
 msgstr "Tâche mise à jour"
 
-#: views.py:205
+#: views.py:203
 msgid "Task created"
 msgstr "Tâche créée"
 
-#: views.py:231
+#: views.py:240
 msgid "Task deleted"
 msgstr "Tâche supprimée"
+
+#: views.py:272
+msgid "Please enter the date you performed the task"
+msgstr "Merci d'entrer la date à laquelle tu as effectué la tâche"
+
+#: views.py:284
+msgid "Please enter the date this task is due next"
+msgstr "Merci d'entrer la prochaine date d'échéance"

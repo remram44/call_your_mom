@@ -8,9 +8,9 @@
   <h1>{% blocktrans %}Settings for <em>{{ email }}</em>{% endblocktrans %}</h1>
   {% endwith %}
 
-  <p><a href="{% url 'logout' %}">Click here to log out</a></p>
+  <p><a href="{% url 'logout' %}">{% trans "Click here to log out" %}</a></p>
 
-  <p>{% blocktrans %}Here are your tasks:{% endblocktrans %}</p>
+  <p>{% trans "Here are your tasks:" %}</p>
 
   <table class="table table-striped">
     <thead>
