@@ -9,13 +9,14 @@
   {% endwith %}
 
   <form class="form-horizontal" action="{% url 'ack_task' task.id %}" method="post">
+    {% csrf_token %}
     <div class="form-group row">
       <label class="col-sm-2 col-form-label" for="done">{% trans "Done on:" context "task form" %}</label>
-      <div class="col-sm-8"><input type="date" class="form-control" name="done" id="done" value="{{ today.isoformat }}"/></div>
+      <div class="col-sm-8"><input type="date" class="form-control" name="done" id="done" value="{{ task_done.isoformat }}"/></div>
     </div>
     <div class="form-group row">
       <label class="col-sm-2 col-form-label" for="due">{% trans "Due:" context "task form" %}</label>
-      <div class="col-sm-8"><input type="date" class="form-control" name="due" id="due" value="{{ today.isoformat }}"/></div>
+      <div class="col-sm-8"><input type="date" class="form-control" name="due" id="due" value="{{ task_due.isoformat }}"/></div>
     </div>
     <input type="submit" class="btn btn-info btn-lg" value="{% trans "Save" context "ack form" %}"/>
   </form>

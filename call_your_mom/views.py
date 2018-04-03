@@ -9,7 +9,7 @@ from django.utils.translation import gettext as _
 
 from .auth import needs_login, send_login_email, send_register_email, \
     clear_login
-from .models import CYMUser, Task
+from .models import CYMUser, Task, TaskDone
 
 
 def index(request):
@@ -256,13 +256,53 @@ def ack_task(request, task_id):
     if not task or task.user.id != request.cym_user.id:
         return HttpResponseNotFound(_("Couldn't find this task!"))
 
-    # TODO: Ack task form if user's
+    if task and request.method == 'POST':
+        task_done = request.POST.get('done', '')
+        task_due = request.POST.get('due', '')
+
+        valid = True
+
+        if task_done:
+            try:
+                task_done = dateutil.parser.parse(task_done).date()
+            except ValueError:
+                task_done = None
+        if not task_done:
+            messages.add_message(request, messages.ERROR,
+                                 _("Please enter the date you performed the "
+                                   "task"))
+            task_done = datetime.date.today()
+            valid = False
+
+        if task_due:
+            try:
+                task_due = dateutil.parser.parse(task_due).date()
+            except ValueError:
+                task_due = None
+        if not task_due:
+            messages.add_message(request, messages.ERROR,
+                                 _("Please enter the date this task is due "
+                                   "next"))
+            task_due = datetime.date.today()
+            valid = False
+
+        if valid:
+            done = TaskDone(task=task, done=task_done)
+            done.save()
+
+            task.due = task_due
+            task.save()
+
+            return redirect('profile')
+    else:
+        task_done = datetime.date.today()
+        task_due = task_done + datetime.timedelta(days=task.interval_days)
 
     return render(request, 'call_your_mom/ack_task.html',
                   {'task': task,
                    'today': datetime.date.today(),
-                   'next_due': datetime.date.today() +
-                               datetime.timedelta(days=task.interval_days)})
+                   'task_done': task_done,
+                   'task_due': task_due})
 
 
 def set_lang(request, lang):
