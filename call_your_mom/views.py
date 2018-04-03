@@ -141,29 +141,34 @@ def change_task(request, task_id):
         if not task or task.user.id != request.cym_user.id:
             return HttpResponseNotFound(_("Couldn't find this task!"))
 
-    if task:
-        task_name = task.name
-        task_description = task.description
-        task_interval_days = task.interval_days
-        task_due = task.due
-    else:
-        task_name = ''
-        task_description = ''
-        task_interval_days = 7
-        task_due = (datetime.date.today() +
-                    datetime.timedelta(days=task_interval_days))
-
     if request.method == 'POST':
         task_name = request.POST.get('name', '')
         task_description = request.POST.get('description', '')
         task_due = request.POST.get('due', '')
         task_interval_days = request.POST.get('interval_days', '')
 
+        valid = True
+
+        if not task_name:
+            messages.add_message(request, messages.ERROR,
+                                 _("Please give your task a name"))
+            valid = False
+
         if task_due:
             try:
                 task_due = dateutil.parser.parse(task_due).date()
             except ValueError:
                 task_due = None
+        if not task_due:
+            messages.add_message(request, messages.ERROR,
+                                 _("Please give your task a due date"))
+            if task:
+                task_due = task.due
+            else:
+                task_due = (datetime.date.today() +
+                            datetime.timedelta(days=task_interval_days))
+            valid = False
+
         if task_interval_days:
             try:
                 task_interval_days = int(task_interval_days)
@@ -171,21 +176,14 @@ def change_task(request, task_id):
                 task_interval_days = None
             if task_interval_days < 1:
                 task_interval_days = None
-
-        if not task_name:
+        if not task_interval_days:
             messages.add_message(request, messages.ERROR,
-                                 _("Please give your task a name"))
-        elif not task_interval_days:
+                                 _("Please give your task an interval in days "
+                                   "between occurrences"))
             task_interval_days = 7
-        elif not task_due:
-            messages.add_message(request, messages.ERROR,
-                                 _("Please enter an interval"))
-            if task_interval_days:
-                task_due = (datetime.date.today() +
-                            datetime.timedelta(days=task_interval_days))
-            elif task:
-                task_due = task.due
-        else:
+            valid = False
+
+        if valid:
             if task:
                 task.name = task_name
                 task.description = task_description
@@ -204,6 +202,17 @@ def change_task(request, task_id):
                 messages.add_message(request, messages.INFO,
                                      _("Task created"))
             return redirect('profile')
+    elif task:
+        task_name = task.name
+        task_description = task.description
+        task_interval_days = task.interval_days
+        task_due = task.due
+    else:
+        task_name = ''
+        task_description = ''
+        task_interval_days = 7
+        task_due = (datetime.date.today() +
+                    datetime.timedelta(days=task_interval_days))
 
     return render(request, 'call_your_mom/change_task.html',
                   {'task_id': task_id,
