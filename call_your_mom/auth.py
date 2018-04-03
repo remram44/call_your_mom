@@ -1,12 +1,11 @@
 from base64 import b32encode, b32decode
-import datetime
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.mail import send_mail
 from django.core.signing import Signer
 from django.shortcuts import redirect
 from django.template.loader import render_to_string
 from django.urls import reverse
-from django.utils import translation
+from django.utils import timezone, translation
 from django.utils.deprecation import MiddlewareMixin
 from django.utils.translation import gettext as _
 import functools
@@ -24,7 +23,7 @@ class TokenAuthMiddleware(MiddlewareMixin):
             token = b32decode(token.upper().encode('ascii')).decode('ascii')
             user_id = Signer().unsign(token)
             request.cym_user = CYMUser.objects.get(id=user_id)
-            request.cym_user.last_login = datetime.datetime.now()
+            request.cym_user.last_login = timezone.now()
             request.cym_user.save()
             request.session[CYMUser.USER_ID_KEY] = user_id
 
@@ -32,6 +31,9 @@ class TokenAuthMiddleware(MiddlewareMixin):
             lang = request.cym_user.language
             translation.activate(lang)
             request.session[translation.LANGUAGE_SESSION_KEY] = lang
+
+            # And preferred timezone
+            timezone.activate(request.cym_user.timezone)
 
             # Redirect to destination without token
             return redirect(request.path)

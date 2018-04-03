@@ -1,10 +1,10 @@
-import datetime
 from django.core.mail import send_mail
 from django.core.management.base import BaseCommand
 from django.template.loader import render_to_string
 from django.urls import reverse
-from django.utils import translation
+from django.utils import timezone, translation
 from django.utils.translation import gettext as _
+import pytz
 
 from website import settings
 from ...auth import make_login_link
@@ -15,9 +15,11 @@ class Command(BaseCommand):
     help = "Cron command sending the reminder emails for tasks that are due"
 
     def handle(self, *args, **options):
-        now = datetime.date.today()
+        now = timezone.now()
         for task in Task.objects.all():
-            if (task.due <= now and
+            now_local = timezone.make_naive(now,
+                                            pytz.timezone(task.user.timezone))
+            if (task.due <= now_local and
                     (not task.reminded or task.reminded < task.due)):
                 self.stderr.write(self.style.SUCCESS(
                     "Sending email to {0} for task {1}".format(

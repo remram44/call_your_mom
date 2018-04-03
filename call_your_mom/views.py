@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponseNotFound
 from django.shortcuts import redirect, render
-from django.utils import translation
+from django.utils import timezone, translation
 from django.utils.translation import gettext as _
 
 from .auth import needs_login, send_login_email, send_register_email, \
@@ -55,8 +55,8 @@ def register(request):
         else:
             user = CYMUser(
                 email=email,
-                created=datetime.datetime.now(),
-                last_login_email=datetime.datetime.now(),
+                created=timezone.now(),
+                last_login_email=timezone.now(),
             )
             user.save()
             send_register_email(user)
@@ -199,8 +199,9 @@ def change_task(request, task_id):
             if task:
                 task_due = task.due
             else:
-                task_due = (datetime.date.today() +
+                task_due = (timezone.now() +
                             datetime.timedelta(days=task_interval_days))
+                task_due = timezone.make_naive(task_due)
             valid = False
 
         if task_interval_days:
@@ -245,8 +246,9 @@ def change_task(request, task_id):
         task_name = ''
         task_description = ''
         task_interval_days = 7
-        task_due = (datetime.date.today() +
+        task_due = (timezone.now() +
                     datetime.timedelta(days=task_interval_days))
+        task_due = timezone.make_naive(task_due).date()
 
     return render(request, 'call_your_mom/change_task.html',
                   {'task_id': task_id,
@@ -305,7 +307,7 @@ def ack_task(request, task_id):
             messages.add_message(request, messages.ERROR,
                                  _("Please enter the date you performed the "
                                    "task"))
-            task_done = datetime.date.today()
+            task_done = timezone.make_naive(timezone.now()).date()
             valid = False
 
         if task_due:
@@ -317,7 +319,7 @@ def ack_task(request, task_id):
             messages.add_message(request, messages.ERROR,
                                  _("Please enter the date this task is due "
                                    "next"))
-            task_due = datetime.date.today()
+            task_due = task_done + datetime.timedelta(days=task.interval_days)
             valid = False
 
         if valid:
@@ -329,12 +331,11 @@ def ack_task(request, task_id):
 
             return redirect('profile')
     else:
-        task_done = datetime.date.today()
+        task_done = timezone.make_naive(timezone.now()).date()
         task_due = task_done + datetime.timedelta(days=task.interval_days)
 
     return render(request, 'call_your_mom/ack_task.html',
                   {'task': task,
-                   'today': datetime.date.today(),
                    'task_done': task_done,
                    'task_due': task_due})
 
