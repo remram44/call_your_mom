@@ -9,11 +9,11 @@ After signing up with your email, you can set tasks that should be done every N 
 
 ## Development status
 
-This should be close to ready, but hasn't been tested very much just yet.
+It works! More functionality is planned, see issues.
 
-Expect this to be deployed publicly in a few days.
+It is currently deployed at https://callyourmom.remram.fr/
 
-Contributions welcome!
+Suggestions and contributions welcome!
 
 ## Motivation
 
