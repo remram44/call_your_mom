@@ -32,6 +32,9 @@ class TokenAuthMiddleware(MiddlewareMixin):
             lang = request.cym_user.language
             translation.activate(lang)
             request.session[translation.LANGUAGE_SESSION_KEY] = lang
+
+            # Redirect to destination without token
+            return redirect(request.path)
         # Get user from session
         elif CYMUser.USER_ID_KEY in request.session:
             user_id = request.session[CYMUser.USER_ID_KEY]
