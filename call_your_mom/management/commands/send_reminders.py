@@ -11,13 +11,6 @@ from ...auth import make_login_link
 from ...models import Task
 
 
-# FIXME: debug
-def send_mail(**kwargs):
-    print("WOULD SEND EMAIL")
-    for k, v in kwargs.items():
-        print("    {0}: {1}".format(k, v))
-
-
 class Command(BaseCommand):
     help = "Cron command sending the reminder emails for tasks that are due"
 

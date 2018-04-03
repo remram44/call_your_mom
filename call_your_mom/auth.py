@@ -69,13 +69,6 @@ def make_login_link(user_id, path='/'):
     return settings.URL_ROOT + path + '?token=' + token
 
 
-# FIXME: debug
-def send_mail(**kwargs):
-    print("WOULD SEND EMAIL")
-    for k, v in kwargs.items():
-        print("    {0}: {1}".format(k, v))
-
-
 def send_login_email(user, path='/'):
     link = make_login_link(user.id, path)
 
