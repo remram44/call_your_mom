@@ -1,7 +1,50 @@
-table td, table th {
-    border: 1px solid black;
+@import url('https://fonts.googleapis.com/css?family=Nanum+Pen+Script');
+
+.container {
+  padding-top: 1em;
 }
 
-table {
-    margin: 1em;
+footer {
+  text-align: center;
+  padding-bottom: 1em;
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+  background-color: #e5f3f8;
+}
+
+.page-header > h1 {
+  font-family: 'Nanum Pen Script', cursive;
+  font-size: 500%;
+  text-align: center;
+}
+
+.form-inline > input {
+  margin-left: 10px;
+}
+
+.alert-error {
+  color: #7d2213;
+  background-color: #fcd9d3;
+  border-color: #fbcac2;
+}
+
+.alert-error hr {
+  border-top-color: #f9b5aa;
+}
+
+.alert-error .alert-link {
+  color: #51160c;
+}
+
+.alert-error, .alert-error > th, .alert-error > td {
+  background-color: #f04124;
+}
+
+.alert > strong {
+  font-size: 130%;
+}
+
+.badge-primary > a {
+  color: white;
 }

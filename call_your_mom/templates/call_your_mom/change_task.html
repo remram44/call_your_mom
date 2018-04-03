@@ -5,24 +5,42 @@
 {% block content %}
 
   {% if new %}
-  <h1>{% blocktrans %}Create a task{% endblocktrans %}</h1>
+  <h1>{% blocktrans %}Create a task:{% endblocktrans %}</h1>
   {% else %}
   <h1>{% blocktrans %}Edit task: {{ task_name }}{% endblocktrans %}</h1>
   {% endif %}
-
+  <br/>
   <form action="{% url 'change_task' task_id %}" method="post">
-    {% csrf_token %}
-    <p>{% trans "Name:" context "task form" %} <input type="text" name="name" value="{{ task_name }}"/></p>
-    <p>{% trans "Description:" context "task form" %} <textarea name="description">{{ task_description }}</textarea></p>
-    <p>{% trans "Interval (days):" context "task form" %} <input type="number" name="interval_days" value="{{ task_interval_days }}"/></p>
-    <p>{% trans "Due:" context "task form" %} <input type="date" name="due" value="{{ task_due.isoformat }}"/></p>
-    <p>
-      {% if new %}
-      <input type="submit" value="{% trans "Create" context "new task" %}"/>
-      {% else %}
-      <input type="submit" value="{% trans "Save" context "change task" %}"/>
-      {% endif %}
-    </p>
+  {% csrf_token %}
+    <div class="form-group row">
+      <label for="name" class="col-sm-2 col-form-label">{% trans "Name:" context "task form" %}</label>
+      <div class="col-sm-10">
+        <input class="form-control" type="text" name="name" id="name" value="{{ task_name }}"/>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="description" class="col-sm-2 col-form-label">{% trans "Description:" context "task form" %}</label>
+      <div class="col-sm-10">
+        <textarea class="form-control" id="description" rows="3">{{ task_description }}</textarea>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="interval_days" class="col-sm-2 col-form-label">{% trans "Interval (days):" context "task form" %}</label>
+      <div class="col-sm-10">
+        <input class="form-control" type="number" name="interval_days" id="interval_days" value="{{ task_interval_days }}"/>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="due" class="col-sm-2 col-form-label">{% trans "Due:" context "task form" %}</label>
+      <div class="col-sm-10">
+        <input class="form-control" type="date" name="due" id="due" value="{{ task_due.isoformat }}"/>
+      </div>
+    </div>
+    {% if new %}
+      <input type="submit" class="btn btn-info btn-lg" value="{% trans "Create" context "new task" %}"/>
+    {% else %}
+      <input type="submit" class="btn btn-info btn-lg" value="{% trans "Save" context "change task" %}"/>
+    {% endif %}
   </form>
 
 {% endblock %}
