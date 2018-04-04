@@ -20,6 +20,11 @@ jobs:
             pipenv run flake8
           command: |
             cp website/settings.py.sample website/settings.py
+            cat >>website/settings.py <<END
+            TEST_RUNNER = 'xmlrunner.extra.djangotestrunner.XMLTestRunner'
+            TEST_OUTPUT_VERBOSE = 2
+            TEST_OUTPUT_DIR = 'test-results'
+            END
             pipenv run "python manage.py test"
       - store_test_results:
           path: test-results
