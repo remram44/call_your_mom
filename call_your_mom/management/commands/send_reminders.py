@@ -19,7 +19,7 @@ class Command(BaseCommand):
         for task in Task.objects.all():
             now_local = timezone.make_naive(now,
                                             pytz.timezone(task.user.timezone))
-            if (task.due <= now_local and
+            if (task.due <= now_local.date() and
                     (not task.reminded or task.reminded < task.due)):
                 self.stderr.write(self.style.SUCCESS(
                     "Sending email to {0} for task {1}".format(
