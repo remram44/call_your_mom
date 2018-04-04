@@ -1,0 +1,46 @@
+[
+{
+  "model": "call_your_mom.cymuser",
+  "pk": 1,
+  "fields": {
+    "email": "remirampin@gmail.com",
+    "created": "2018-04-03T17:40:03.334Z",
+    "language": "en",
+    "last_login": "2018-04-03T20:49:11.080Z",
+    "last_login_email": "2018-04-03T17:40:03.333Z",
+    "timezone": "UTC"
+  }
+},
+{
+  "model": "call_your_mom.task",
+  "pk": 2,
+  "fields": {
+    "type": "",
+    "user": 1,
+    "name": "call your mom",
+    "description": "",
+    "created": "2018-04-03T18:45:13.728Z",
+    "interval_days": 7,
+    "due": "2018-04-02",
+    "reminded": "2018-04-03"
+  }
+},
+{
+  "model": "call_your_mom.taskdone",
+  "pk": 1,
+  "fields": {
+    "task": 2,
+    "done": "2018-04-01",
+    "recorded": "2018-04-03T18:50:40.143Z"
+  }
+},
+{
+  "model": "call_your_mom.taskdone",
+  "pk": 2,
+  "fields": {
+    "task": 2,
+    "done": "2018-04-01",
+    "recorded": "2018-04-03T20:49:46.077Z"
+  }
+}
+]
