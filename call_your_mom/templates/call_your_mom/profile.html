@@ -29,7 +29,6 @@
     <thead>
       <tr>
         <th>{% trans "Name" %}</th>
-        <th>{% trans "Type" %}</th>
         <th>{% trans "Created" %}</th>
         <th>{% trans "Interval" %}</th>
         <th>{% trans "Due" %}</th>
@@ -40,7 +39,6 @@
       {% for task in tasks %}
       <tr>
         <td>{{ task.name }}</td>
-        <td>{{ task.type }}</td>
         <td>{{ task.created }}</td>
         <td>{% with interval=task.interval_days %}{% blocktrans %}{{ interval }} days{% endblocktrans %}{% endwith %}</td>
         <td>{{ task.due }}</td>
