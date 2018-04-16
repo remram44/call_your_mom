@@ -10,10 +10,14 @@ from django.utils import timezone, translation
 from django.utils.deprecation import MiddlewareMixin
 from django.utils.translation import gettext as _
 import functools
+import logging
 import urllib.parse
 
 from website import settings
 from .models import CYMUser
+
+
+logger = logging.getLogger(__name__)
 
 
 class TokenAuthMiddleware(MiddlewareMixin):
@@ -79,6 +83,7 @@ def email_rate_limit(user, now=None):
 
     # Don't ever send more than one email every 5 minutes
     if user.last_login_email + datetime.timedelta(minutes=5) > now:
+        logger.warning("Rate-limiting at 10 minutes")
         raise EmailRateLimit("Sent email less than 10 minutes ago")
 
     # If the user logged in since his last email, he can get a new one
@@ -88,12 +93,17 @@ def email_rate_limit(user, now=None):
     # If user never completed registration, new email can be sent after 7 days
     if user.last_login is None:
         delay = datetime.timedelta(days=7)
+        if user.last_login_email + delay > now:
+            logger.warning("Rate-limiting at 7 days")
+            raise EmailRateLimit("User never logged in and we sent email less "
+                                 "than 7 days ago")
     # If the user did finish registering, new email can be sent after 1 day
     else:
         delay = datetime.timedelta(hours=23)
-
-    if user.last_login_email + delay > now:
-        raise EmailRateLimit
+        if user.last_login_email + delay > now:
+            logger.warning("Rate-limiting at 23 hours")
+            raise EmailRateLimit("User didn't log in since last email and we "
+                                 "sent email less than 23 hours ago")
 
 
 def make_login_link(user_id, path='/'):
