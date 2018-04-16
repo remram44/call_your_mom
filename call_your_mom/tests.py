@@ -1,8 +1,10 @@
+import datetime
 from django.test import TestCase
 from django.urls import reverse, resolve
 import contextlib
 import urllib.parse
 
+from . import auth
 from . import views
 from .models import CYMUser
 
@@ -54,6 +56,43 @@ class AuthCase(LogInTestCase):
             response = self.client.get(reverse('index'))
             self.assertEqual(response.status_code, 302)
             self.assertTrue(response.url.startswith(reverse('profile')))
+
+    def test_ratelimit(self):
+        # User that has never logged in (never completed registration)
+        # Has to wait 7 days
+        user = CYMUser(email='nobody@example.com',
+                       last_login_email=datetime.datetime(2018, 4, 2,
+                                                          16, 0, 0),
+                       last_login=None)
+        with self.assertRaises(auth.EmailRateLimit):
+            auth.email_rate_limit(user, datetime.datetime(2018, 4, 6))
+        auth.email_rate_limit(user, datetime.datetime(2018, 4, 10))
+
+        # User that logged in since last email
+        # Has to wait 10 minutes
+        user = CYMUser(email='nobody@example.com',
+                       last_login_email=datetime.datetime(2018, 4, 2,
+                                                          16, 0, 0),
+                       last_login=datetime.datetime(2018, 4, 2,
+                                                    16, 1, 0))
+        with self.assertRaises(auth.EmailRateLimit):
+            auth.email_rate_limit(user, datetime.datetime(2018, 4, 2,
+                                                          16, 6, 0))
+        auth.email_rate_limit(user, datetime.datetime(2018, 4, 2,
+                                                      16, 11, 0))
+
+        # User that hasn't logged in since last email
+        # Has to wait 23 hours
+        user = CYMUser(email='nobody@example.com',
+                       last_login_email=datetime.datetime(2018, 4, 2,
+                                                          16, 13, 0),
+                       last_login=datetime.datetime(2018, 4, 2,
+                                                    16, 11, 0))
+        with self.assertRaises(auth.EmailRateLimit):
+            auth.email_rate_limit(user, datetime.datetime(2018, 4, 2,
+                                                          16, 14, 0))
+        auth.email_rate_limit(user, datetime.datetime(2018, 4, 3,
+                                                      16, 14, 0))
 
 
 class AckTestCase(LogInTestCase):

@@ -10,7 +10,7 @@ from django.utils import timezone, translation
 from django.utils.translation import gettext as _
 
 from .auth import needs_login, send_login_email, send_register_email, \
-    clear_login
+    clear_login, EmailRateLimit
 from .models import CYMUser, Task, TaskDone
 
 
@@ -44,22 +44,23 @@ def register(request):
             user = CYMUser.objects.get(email=email)
         except ObjectDoesNotExist:
             user = None
-        else:
-            # If the user never logged in, delete it
-            if user.last_login is None:
-                user.delete()
-                user = None
 
-        if user is not None:
-            send_login_email(user)
-        else:
-            user = CYMUser(
-                email=email,
-                created=timezone.now(),
-                last_login_email=timezone.now(),
-            )
-            user.save()
-            send_register_email(user)
+        try:
+            if user is not None:
+                send_login_email(user)
+            else:
+                user = CYMUser(
+                    email=email,
+                    created=timezone.now(),
+                    last_login_email=timezone.now(),
+                )
+                send_register_email(user)
+                user.save()
+        except EmailRateLimit:
+            messages.add_message(
+                request, messages.ERROR,
+                _("Rate-limiting is active. Not sending another email to "
+                  "{0}.").format(user.email))
 
         messages.add_message(
             request, messages.INFO,
@@ -90,7 +91,15 @@ def login(request):
         except ObjectDoesNotExist:
             pass
         else:
-            send_login_email(user, path)
+            try:
+                send_login_email(user, path)
+                user.last_login_email = timezone.now()
+                user.save()
+            except EmailRateLimit:
+                messages.add_message(
+                    request, messages.ERROR,
+                    _("Rate-limiting is active. Not sending another email to "
+                      "{0}.").format(user.email))
 
         messages.add_message(
             request, messages.INFO,
@@ -127,7 +136,9 @@ for name in pytz.common_timezones:
     if offset < 0:
         offset = -offset
         offset_str = '-'
-    offset_str = '{}{:02}:{:02}'.format(offset_str, offset // 3600, (offset // 60) % 60)
+    offset_str = '{}{:02}:{:02}'.format(offset_str,
+                                        offset // 3600,
+                                        (offset // 60) % 60)
 
     _timezones.append((orig, offset_str, name))
 _timezones = [(n, s) for (o, s, n) in sorted(_timezones)]

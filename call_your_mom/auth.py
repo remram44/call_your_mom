@@ -1,4 +1,5 @@
 from base64 import b32encode, b32decode
+import datetime
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.mail import send_mail
 from django.core.signing import Signer
@@ -67,6 +68,34 @@ def needs_login(wrapped):
     return wrapper
 
 
+class EmailRateLimit(RuntimeError):
+    """Hit rate limit of emails.
+    """
+
+
+def email_rate_limit(user, now):
+    if now is None:
+        now = timezone.now()
+
+    # Don't ever send more than one email every 10 minutes
+    if user.last_login_email + datetime.timedelta(minutes=10) > now:
+        raise EmailRateLimit("Sent email less than 10 minutes ago")
+
+    # If the user logged in since his last email, he can get a new one
+    if user.last_login is not None and user.last_login > user.last_login_email:
+        return
+
+    # If user never completed registration, new email can be sent after 7 days
+    if user.last_login is None:
+        delay = datetime.timedelta(days=7)
+    # If the user did finish registering, new email can be sent after 1 day
+    else:
+        delay = datetime.timedelta(hours=23)
+
+    if user.last_login_email + delay > now:
+        raise EmailRateLimit
+
+
 def make_login_link(user_id, path='/'):
     signer = Signer()
     token = signer.sign(str(user_id))
@@ -75,6 +104,8 @@ def make_login_link(user_id, path='/'):
 
 
 def send_login_email(user, path='/'):
+    email_rate_limit(user)
+
     link = make_login_link(user.id, path)
 
     # We send the email in the user's preferred language, not the requester's
@@ -100,6 +131,8 @@ def send_login_email(user, path='/'):
 
 
 def send_register_email(user):
+    email_rate_limit(user)
+
     link = make_login_link(user.id)
 
     # We send the email in the user's preferred language, not the requester's
