@@ -73,7 +73,7 @@ class EmailRateLimit(RuntimeError):
     """
 
 
-def email_rate_limit(user, now):
+def email_rate_limit(user, now=None):
     if now is None:
         now = timezone.now()
 
