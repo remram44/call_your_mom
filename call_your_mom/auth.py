@@ -77,8 +77,8 @@ def email_rate_limit(user, now=None):
     if now is None:
         now = timezone.now()
 
-    # Don't ever send more than one email every 10 minutes
-    if user.last_login_email + datetime.timedelta(minutes=10) > now:
+    # Don't ever send more than one email every 5 minutes
+    if user.last_login_email + datetime.timedelta(minutes=5) > now:
         raise EmailRateLimit("Sent email less than 10 minutes ago")
 
     # If the user logged in since his last email, he can get a new one

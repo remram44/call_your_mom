@@ -77,9 +77,9 @@ class AuthCase(LogInTestCase):
                                                     16, 1, 0))
         with self.assertRaises(auth.EmailRateLimit):
             auth.email_rate_limit(user, datetime.datetime(2018, 4, 2,
-                                                          16, 6, 0))
+                                                          16, 4, 0))
         auth.email_rate_limit(user, datetime.datetime(2018, 4, 2,
-                                                      16, 11, 0))
+                                                      16, 7, 0))
 
         # User that hasn't logged in since last email
         # Has to wait 23 hours
