@@ -48,6 +48,8 @@ def register(request):
         try:
             if user is not None:
                 send_login_email(user)
+                user.last_login_email = timezone.now()
+                user.save()
             else:
                 user = CYMUser(
                     email=email,
@@ -61,6 +63,7 @@ def register(request):
                 request, messages.ERROR,
                 _("Rate-limiting is active. Not sending another email to "
                   "{0}.").format(user.email))
+            return redirect('confirm')
 
         messages.add_message(
             request, messages.INFO,
@@ -100,6 +103,7 @@ def login(request):
                     request, messages.ERROR,
                     _("Rate-limiting is active. Not sending another email to "
                       "{0}.").format(user.email))
+                return redirect('confirm')
 
         messages.add_message(
             request, messages.INFO,
