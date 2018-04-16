@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-03 17:39-0400\n"
-"PO-Revision-Date: 2018-04-03 17:40-0400\n"
+"POT-Creation-Date: 2018-04-16 15:24-0400\n"
+"PO-Revision-Date: 2018-04-16 15:24-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -337,6 +337,13 @@ msgstr "Intervalle"
 #: templates/call_your_mom/profile.html:35
 msgid "Due"
 msgstr "Échéance"
+
+#: templates/call_your_mom/profile.html:45
+#, python-format
+#| msgctxt "task form"
+#| msgid "Interval (days):"
+msgid "%(interval)s days"
+msgstr "%(interval)s jours"
 
 #: templates/call_your_mom/profile.html:48
 msgid "Edit task"

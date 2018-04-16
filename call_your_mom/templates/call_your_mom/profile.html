@@ -42,7 +42,7 @@
         <td>{{ task.name }}</td>
         <td>{{ task.type }}</td>
         <td>{{ task.created }}</td>
-        <td>{{ task.interval_days }}</td>
+        <td>{% with interval=task.interval_days %}{% blocktrans %}{{ interval }} days{% endblocktrans %}{% endwith %}</td>
         <td>{{ task.due }}</td>
         <td>
           <a href="{% url 'change_task' task.id %}"><i class="fas fa-edit fa-lg" title="{% trans "Edit task" %}"></i></a>
