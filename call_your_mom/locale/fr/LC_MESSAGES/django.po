@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-16 15:24-0400\n"
-"PO-Revision-Date: 2018-04-16 15:24-0400\n"
+"POT-Creation-Date: 2018-04-16 16:44-0400\n"
+"PO-Revision-Date: 2018-04-16 16:45-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 2.0.4\n"
 
-#: auth.py:87 templates/call_your_mom/email_login.html:7
+#: auth.py:128 templates/call_your_mom/email_login.html:7
 msgid ""
 "Someone requested a login link for Call Your Mom. You can use the link below "
 "to log in:"
@@ -26,12 +26,12 @@ msgstr ""
 "Quelqu'un a demandé un lien pour se connecter à Call Your Mom. Vous pouvez "
 "utilisez le lien ci-dessous pour vous connecter :"
 
-#: auth.py:90 auth.py:115 templates/call_your_mom/email_login.html:11
+#: auth.py:131 auth.py:158 templates/call_your_mom/email_login.html:11
 #: templates/call_your_mom/email_register.html:11
 msgid "If this wasn't you, feel free to ignore this message."
 msgstr "Si ce n'était pas vous, vous pouvez ignorer ce message."
 
-#: auth.py:112 templates/call_your_mom/email_register.html:7
+#: auth.py:155 templates/call_your_mom/email_register.html:7
 msgid ""
 "Someone requested an account for Call Your Mom using this email address. You "
 "can use the link below to log in:"
@@ -330,34 +330,32 @@ msgstr "Type"
 msgid "Created"
 msgstr "Créée"
 
-#: templates/call_your_mom/profile.html:34
+#: templates/call_your_mom/profile.html:33
 msgid "Interval"
 msgstr "Intervalle"
 
-#: templates/call_your_mom/profile.html:35
+#: templates/call_your_mom/profile.html:34
 msgid "Due"
 msgstr "Échéance"
 
-#: templates/call_your_mom/profile.html:45
+#: templates/call_your_mom/profile.html:43
 #, python-format
-#| msgctxt "task form"
-#| msgid "Interval (days):"
 msgid "%(interval)s days"
 msgstr "%(interval)s jours"
 
-#: templates/call_your_mom/profile.html:48
+#: templates/call_your_mom/profile.html:46
 msgid "Edit task"
 msgstr "Modifier cette tâche"
 
-#: templates/call_your_mom/profile.html:49
+#: templates/call_your_mom/profile.html:47
 msgid "Delete task"
 msgstr "Supprimer cette tâche"
 
-#: templates/call_your_mom/profile.html:54
+#: templates/call_your_mom/profile.html:52
 msgid "No task yet"
 msgstr "Aucune tâche pour l'instant"
 
-#: templates/call_your_mom/profile.html:58
+#: templates/call_your_mom/profile.html:56
 msgid "Add a task"
 msgstr "Créer une tâche"
 
@@ -365,11 +363,16 @@ msgstr "Créer une tâche"
 msgid "Sign up!"
 msgstr "Inscris-toi !"
 
-#: views.py:39 views.py:84
+#: views.py:39 views.py:88
 msgid "Please provide an email address"
 msgstr "Merci d'entrer une addresse email"
 
-#: views.py:66
+#: views.py:64 views.py:104
+#, python-brace-format
+msgid "Rate-limiting is active. Not sending another email to {0}."
+msgstr "Limite de message atteinte. Pas de nouvel email envoyé à {0}."
+
+#: views.py:70
 #, python-brace-format
 msgid ""
 "We have sent an email to {0}. Please follow the link inside to start "
@@ -378,7 +381,7 @@ msgstr ""
 "Nous avons envoyé un email à {0}. Merci de suivre le lien à l'intérieur pour "
 "commencer à ajouter des tâches."
 
-#: views.py:97
+#: views.py:110
 #, python-brace-format
 msgid ""
 "We have sent an email to {0}, if such an account exist. Please follow the "
@@ -387,46 +390,46 @@ msgstr ""
 "Nous avons envoyé un email à {0}, si ce compte existe. Merci de suivre le "
 "lien à l'intérieur pour te connecter."
 
-#: views.py:109
+#: views.py:122
 msgid "You have been logged out."
 msgstr "Tu as été déconnecté."
 
-#: views.py:151
+#: views.py:166
 msgid "Timezone updated"
 msgstr "Fuseau horaire mis à jour"
 
-#: views.py:176 views.py:272 views.py:293
+#: views.py:191 views.py:287 views.py:308
 msgid "Couldn't find this task!"
 msgstr "Impossible de trouver cette tâche !"
 
-#: views.py:188
+#: views.py:203
 msgid "Please give your task a name"
 msgstr "Merci de donner un nom à ta tâche"
 
-#: views.py:198
+#: views.py:213
 msgid "Please give your task a due date"
 msgstr "Merci d'entrer une date d'échéance"
 
-#: views.py:216
+#: views.py:231
 msgid "Please give your task an interval in days between occurrences"
 msgstr "Merci d'entrer le nombre de jours entre les échéances"
 
-#: views.py:229
+#: views.py:244
 msgid "Task updated"
 msgstr "Tâche mise à jour"
 
-#: views.py:238
+#: views.py:253
 msgid "Task created"
 msgstr "Tâche créée"
 
-#: views.py:276
+#: views.py:291
 msgid "Task deleted"
 msgstr "Tâche supprimée"
 
-#: views.py:308
+#: views.py:323
 msgid "Please enter the date you performed the task"
 msgstr "Merci d'entrer la date à laquelle tu as effectué la tâche"
 
-#: views.py:320
+#: views.py:335
 msgid "Please enter the date this task is due next"
 msgstr "Merci d'entrer la prochaine date d'échéance"
