@@ -129,11 +129,11 @@ def confirm(request):
     return render(request, 'call_your_mom/confirm.html')
 
 
-_now = datetime.datetime.utcnow()
+_somedate = datetime.datetime(2018, 1, 2, 13, 0)
 _timezones = []
 for name in pytz.common_timezones:
     tz = pytz.timezone(name)
-    offset = tz.utcoffset(_now) - tz.dst(_now)
+    offset = tz.utcoffset(_somedate) - tz.dst(_somedate)
     offset = orig = int(offset.total_seconds())
 
     offset_str = '+'
