@@ -181,6 +181,7 @@ def change_task(request, task_id):
     """
     if task_id == 'new':
         task = None
+        task_done_previously = []
     else:
         try:
             task_id = int(task_id)
@@ -189,6 +190,12 @@ def change_task(request, task_id):
             task = None
         if not task or task.user.id != request.cym_user.id:
             return HttpResponseNotFound(_("Couldn't find this task!"))
+
+        task_done_previously = (
+            TaskDone.objects.filter(task=task)
+            .order_by('-done')
+            .all()[:30]
+        )
 
     if request.method == 'POST':
         task_name = request.POST.get('name', '')
@@ -271,6 +278,7 @@ def change_task(request, task_id):
                    'task_description': task_description,
                    'task_interval_days': task_interval_days,
                    'task_due': task_due,
+                   'task_done_previously': task_done_previously,
                    'new': task is None})
 
 

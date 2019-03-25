@@ -43,4 +43,15 @@
     {% endif %}
   </form>
 
+  {% if not new and task_done_previously %}
+  <h1>Previously done:</h1>
+  <ul>
+  {% for task_done in task_done_previously %}
+  <li>{{ task_done.done }}</li>
+  {% empty %}
+  <li><em>Task was never completed yet</em></li>
+  {% endfor %}
+  </ul>
+  {% endif %}
+
 {% endblock %}
