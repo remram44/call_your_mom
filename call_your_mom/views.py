@@ -278,6 +278,7 @@ def change_task(request, task_id):
                    'task_description': task_description,
                    'task_interval_days': task_interval_days,
                    'task_due': task_due,
+                   'task_is_due': task.is_due(request.cym_user.timezone),
                    'task_done_previously': task_done_previously,
                    'new': task is None})
 
@@ -360,7 +361,8 @@ def ack_task(request, task_id):
     return render(request, 'call_your_mom/ack_task.html',
                   {'task': task,
                    'task_done': task_done,
-                   'task_due': task_due})
+                   'task_due': task_due,
+                   'task_is_due': task.is_due(request.cym_user.timezone)})
 
 
 def set_lang(request, lang):

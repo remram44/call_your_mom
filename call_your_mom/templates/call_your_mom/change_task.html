@@ -43,6 +43,15 @@
     {% endif %}
   </form>
 
+  <p>
+    {% if task_is_due %}
+    <strong>This task is due.</strong>
+    {% else %}
+    This task is not yet due.
+    {% endif %}
+    <a href="{% url 'ack_task' task_id %}">Click here to mark it as done.</a>
+  </p>
+
   {% if not new and task_done_previously %}
   <h1>Previously done:</h1>
   <ul>

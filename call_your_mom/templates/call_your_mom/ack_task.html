@@ -8,6 +8,12 @@
   <h1>{% blocktrans %}Task done: {{ task_name }}{% endblocktrans %}</h1><br/>
   {% endwith %}
 
+  {% if task_is_due %}
+  <p>Task is due</p>
+  {% else %}
+  <p>Task is not yet due</p>
+  {% endif %}
+
   <form class="form-horizontal" action="{% url 'ack_task' task.id %}" method="post">
     {% csrf_token %}
     <div class="form-group row">
@@ -20,5 +26,7 @@
     </div>
     <input type="submit" class="btn btn-info btn-lg" value="{% trans "Save" context "ack form" %}"/>
   </form>
+
+  <p>Or <a href="{% url 'change_task' task.id %}">edit this task</a></p>
 
 {% endblock %}
