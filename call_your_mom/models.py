@@ -1,6 +1,8 @@
 from django.db import models
+from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from model_utils import Choices
+import pytz
 
 
 class CYMUser(models.Model):
@@ -30,6 +32,12 @@ class Task(models.Model):
     interval_days = models.IntegerField()
     due = models.DateField()
     reminded = models.DateField(null=True)
+
+    def is_due(self, user_timezone):
+        user_timezone = pytz.timezone(user_timezone)
+        now = timezone.now()
+        now_local = timezone.make_naive(now, user_timezone)
+        return self.due <= now_local.date()
 
 
 class TaskDone(models.Model):
