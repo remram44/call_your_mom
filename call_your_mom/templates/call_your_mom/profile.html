@@ -14,7 +14,7 @@
     {% csrf_token %}
     <div class="form-group row">
       <label class="col-sm-2 col-form-label" for="timezone">{% trans "Timezone:" %}</label>
-      <div class="col-sm-4"><select name="timezone" id="timezone">
+      <div class="col-sm-4"><select class="form-control" name="timezone" id="timezone">
         {% for tz in timezones %}
           <option value="{{ tz.0 }}"{% if tz.0 == cym_user.timezone %} selected{% endif %}>{{ tz.0 }} ({{ tz.1 }})</option>
         {% endfor %}
