@@ -264,6 +264,7 @@ def change_task(request, task_id):
         task_description = task.description
         task_interval_days = task.interval_days
         task_due = task.due
+        task_is_due = task.is_due(request.cym_user.timezone)
     else:
         task_name = ''
         task_description = ''
@@ -271,6 +272,7 @@ def change_task(request, task_id):
         task_due = (timezone.now() +
                     datetime.timedelta(days=task_interval_days))
         task_due = timezone.make_naive(task_due).date()
+        task_is_due = False
 
     return render(request, 'call_your_mom/change_task.html',
                   {'task_id': task_id,
@@ -278,7 +280,7 @@ def change_task(request, task_id):
                    'task_description': task_description,
                    'task_interval_days': task_interval_days,
                    'task_due': task_due,
-                   'task_is_due': task.is_due(request.cym_user.timezone),
+                   'task_is_due': task_is_due,
                    'task_done_previously': task_done_previously,
                    'new': task is None})
 

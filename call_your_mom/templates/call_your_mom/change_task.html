@@ -49,7 +49,9 @@
     {% else %}
     This task is not yet due.
     {% endif %}
+    {% if not new %}
     <a href="{% url 'ack_task' task_id %}">Click here to mark it as done.</a>
+    {% endif %}
   </p>
 
   {% if not new and task_done_previously %}
