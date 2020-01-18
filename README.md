@@ -46,13 +46,13 @@ There are two types of tasks:
 
 ## How do I install or deploy this
 
-This is a WSGI app using Django. To install it, you will need Python 3 and [pipenv](https://docs.pipenv.org/), then do `pipenv install`.
+This is a WSGI app using Django. To install it, you will need Python 3 and [poetry](https://poetry.eustace.io/), then do `poetry install`.
 
 Copy `website/settings.py.sample` to `website/settings.py` and read it over.
 
-Run `pipenv run python manage.py migrate` to setup the database (`db.sqlite3` by default).
+Run `poetry run python manage.py migrate` to setup the database (`db.sqlite3` by default).
 
-To start the development server, you can use `pipenv run python manage.py runserver`.
+To start the development server, you can use `poetry run python manage.py runserver`.
 
 To deploy this, you can use the WSGI app `website.wsgi`.
 
