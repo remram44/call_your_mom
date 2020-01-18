@@ -66,3 +66,5 @@ docker build -t call_your_mom .
 # Runs the server
 docker run -ti --rm -p 8000:8000 -v $PWD/website:/usr/src/app/website -v $PWD/call_your_mom:/usr/src/app/call_your_mom call_your_mom
 ```
+
+Note that the Docker image runs the Django development server, not an actual web server. Therefore it is not suitable for a production deployment.
