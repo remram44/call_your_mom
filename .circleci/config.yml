@@ -6,18 +6,18 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+          key: deps9-{{ .Branch }}-{{ checksum "poetry.lock" }}
       - run:
           command: |
-            sudo pip install pipenv
-            pipenv install --dev --deploy
+            curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python && /home/circleci/.poetry/bin/poetry config virtualenvs.create true && /home/circleci/.poetry/bin/poetry config virtualenvs.in-project true
+            /home/circleci/.poetry/bin/poetry install
       - save_cache:
-          key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+          key: deps9-{{ .Branch }}-{{ checksum "poetry.lock" }}
           paths:
             - ".venv"
       - run:
           command: |
-            pipenv run flake8
+            /home/circleci/.poetry/bin/poetry run flake8
           command: |
             cp website/settings.py.sample website/settings.py
             cat >>website/settings.py <<END
@@ -25,7 +25,7 @@ jobs:
             TEST_OUTPUT_VERBOSE = 2
             TEST_OUTPUT_DIR = 'test-results'
             END
-            pipenv run "python manage.py test"
+            /home/circleci/.poetry/bin/poetry run python manage.py test
       - store_test_results:
           path: test-results
       - store_artifacts:
