@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-16 16:44-0400\n"
-"PO-Revision-Date: 2020-10-03 11:28+0200\n"
+"PO-Revision-Date: 2020-10-03 20:04+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: cs_CZ\n"
@@ -68,13 +68,13 @@ msgstr "Úkol splněn: %(task_name)s"
 #: templates/call_your_mom/ack_task.html:14
 msgctxt "task form"
 msgid "Done on:"
-msgstr "Splněno :"
+msgstr "Splněno:"
 
 #: templates/call_your_mom/ack_task.html:18
 #: templates/call_your_mom/change_task.html:34
 msgctxt "task form"
 msgid "Due:"
-msgstr "Termín :"
+msgstr "Termín:"
 
 #: templates/call_your_mom/ack_task.html:21
 msgctxt "ack form"
@@ -100,27 +100,27 @@ msgstr "Zobrazit tento web v:"
 
 #: templates/call_your_mom/change_task.html:8
 msgid "Create a task:"
-msgstr "Vytvořit úkol :"
+msgstr "Vytvořit úkol:"
 
 #: templates/call_your_mom/change_task.html:10
 #, python-format
 msgid "Edit task: %(task_name)s"
-msgstr "Upravit úkol : %(task_name)s"
+msgstr "Upravit úkol: %(task_name)s"
 
 #: templates/call_your_mom/change_task.html:16
 msgctxt "task form"
 msgid "Name:"
-msgstr "Název :"
+msgstr "Název:"
 
 #: templates/call_your_mom/change_task.html:22
 msgctxt "task form"
 msgid "Description:"
-msgstr "Popis :"
+msgstr "Popis:"
 
 #: templates/call_your_mom/change_task.html:28
 msgctxt "task form"
 msgid "Interval (days):"
-msgstr "Interval (dní) :"
+msgstr "Interval (dní):"
 
 #: templates/call_your_mom/change_task.html:40
 msgctxt "new task"
@@ -355,7 +355,7 @@ msgstr "Přidat úkol"
 
 #: templates/call_your_mom/register.html:7
 msgid "Sign up!"
-msgstr "Přihlásit se !"
+msgstr "Přihlásit se!"
 
 #: views.py:39 views.py:88
 msgid "Please provide an email address"
@@ -394,7 +394,7 @@ msgstr "Časové pásmo aktualizováno"
 
 #: views.py:191 views.py:287 views.py:308
 msgid "Couldn't find this task!"
-msgstr "Nemohu najít tento úkol !"
+msgstr "Nemohu najít tento úkol!"
 
 #: views.py:203
 msgid "Please give your task a name"
