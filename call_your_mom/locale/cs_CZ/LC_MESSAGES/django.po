@@ -1,0 +1,429 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-04-16 16:44-0400\n"
+"PO-Revision-Date: 2020-10-03 11:28+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: cs_CZ\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n>=2 && n<=4 ? 1 : 2);\n"
+"X-Generator: Poedit 2.4.1\n"
+
+#: auth.py:128 templates/call_your_mom/email_login.html:7
+msgid ""
+"Someone requested a login link for Call Your Mom. You can use the link below "
+"to log in:"
+msgstr ""
+"Někdo si vyžádál přihlašovací odkaz do Call Your Mom. Můžete použít "
+"následující link pro přihlášení:"
+
+#: auth.py:131 auth.py:158 templates/call_your_mom/email_login.html:11
+#: templates/call_your_mom/email_register.html:11
+msgid "If this wasn't you, feel free to ignore this message."
+msgstr "Pokud jste to nebyli Vy, prosím ignorujte tuto zprávu."
+
+#: auth.py:155 templates/call_your_mom/email_register.html:7
+msgid ""
+"Someone requested an account for Call Your Mom using this email address. You "
+"can use the link below to log in:"
+msgstr ""
+"Někdo si vyžádal účet na Call Your Mom a uvedl tuto emailovou adresu. Můžete "
+"použít následující odkaz pro přihlášení:"
+
+#: management/commands/send_reminders.py:34
+#, python-brace-format
+msgid "Reminder - {0}"
+msgstr "Připomínka - {0}"
+
+#: management/commands/send_reminders.py:36
+msgid "You asked to be reminded of this task by Call Your Mom."
+msgstr "Požádali jste o upozornění na tento úkol přes Call Your Mom."
+
+#: management/commands/send_reminders.py:39
+msgid "Follow this link to mark this as done and prime the next reminder:"
+msgstr "Tímto odkazem označíte úkol za splněný a aktivujete další připomínku:"
+
+#: models.py:24
+msgid "normal"
+msgstr "normální"
+
+#: models.py:24
+msgid "exact"
+msgstr "přesně"
+
+#: templates/call_your_mom/ack_task.html:8
+#, python-format
+msgid "Task done: %(task_name)s"
+msgstr "Úkol splněn: %(task_name)s"
+
+#: templates/call_your_mom/ack_task.html:14
+msgctxt "task form"
+msgid "Done on:"
+msgstr "Splněno :"
+
+#: templates/call_your_mom/ack_task.html:18
+#: templates/call_your_mom/change_task.html:34
+msgctxt "task form"
+msgid "Due:"
+msgstr "Termín :"
+
+#: templates/call_your_mom/ack_task.html:21
+msgctxt "ack form"
+msgid "Save"
+msgstr "Uložit"
+
+#: templates/call_your_mom/base.html:27
+#, python-format
+msgid ""
+"The source code for Call Your Mom is available via <a href=\"%(project_url)s"
+"\">github</a>. It is licensed under a modified BSD license, found in the <a "
+"href=\"https://github.com/remram44/call_your_mom/blob/master/LICENSE.txt"
+"\">LICENSE.txt</a> file in the repository."
+msgstr ""
+"Zdrojový kód pro Call Your Mom je k dispozici prostřednictvím <a href="
+"\"%(project_url)s\">github</a>. Je licencován pod upravenou licencí BSD "
+"uvedenou v souboru <a href=\"https://github.com/remram44/call_your_mom/blob/"
+"master/LICENSE.txt\">LICENSE.txt</a> ."
+
+#: templates/call_your_mom/base.html:28
+msgid "View this website in:"
+msgstr "Zobrazit tento web v:"
+
+#: templates/call_your_mom/change_task.html:8
+msgid "Create a task:"
+msgstr "Vytvořit úkol :"
+
+#: templates/call_your_mom/change_task.html:10
+#, python-format
+msgid "Edit task: %(task_name)s"
+msgstr "Upravit úkol : %(task_name)s"
+
+#: templates/call_your_mom/change_task.html:16
+msgctxt "task form"
+msgid "Name:"
+msgstr "Název :"
+
+#: templates/call_your_mom/change_task.html:22
+msgctxt "task form"
+msgid "Description:"
+msgstr "Popis :"
+
+#: templates/call_your_mom/change_task.html:28
+msgctxt "task form"
+msgid "Interval (days):"
+msgstr "Interval (dní) :"
+
+#: templates/call_your_mom/change_task.html:40
+msgctxt "new task"
+msgid "Create"
+msgstr "Vytvořit"
+
+#: templates/call_your_mom/change_task.html:42
+msgctxt "change task"
+msgid "Save"
+msgstr "Uložit"
+
+#: templates/call_your_mom/confirm.html:7
+msgid "Thank you for using Call Your Mom!"
+msgstr "Děkujeme, že používáte Call Your Mom!"
+
+#: templates/call_your_mom/confirm.html:9
+msgid "Back to the home page"
+msgstr "Zpět na hlavní stranu"
+
+#: templates/call_your_mom/email_reminder.html:7
+msgid "You asked to be reminded of this task by Call Your mom."
+msgstr "Požádali jste, aby vám tento úkol připomněl Call Your Mom."
+
+#: templates/call_your_mom/email_reminder.html:11
+msgid "Follow this link to mark this as done and prime the next reminder"
+msgstr ""
+"Pomocí tohoto odkazu to označíte jako vyřízené a připravíte další připomenutí"
+
+#: templates/call_your_mom/email_reminder.html:13
+msgid ""
+"This email was sent because you signed up for Call Your Mom. If you no "
+"longer with to receive those emails, you may delete your account at any time."
+msgstr ""
+"Tento e-mail byl odeslán, protože jste se zaregistrovali do Call Your Mom. "
+"Pokud tyto e-maily již nechcete dostávat, můžete svůj účet kdykoli smazat."
+
+#: templates/call_your_mom/landing.html:6
+msgid ""
+"\n"
+"\n"
+"  <h1>What is this website for?</h1>\n"
+"  <p>Folks use things like lists, boards (Trello or white!), or bug trackers "
+"to organize tasks. Others tend to treat their inbox as a job queue or to-do "
+"list as well. However, none of those systems are meant for tasks that need "
+"to happen again and again.</p>\n"
+"  <p>Sometimes, we don't know how far in advance it would be a good time to "
+"do one of those tasks again. It's a hassle to keep postponing the task in a "
+"calendar, and if you miss the notification, there is the risk it will never "
+"remind us about it again.</p>\n"
+"  <p>After signing up with your email, you can set tasks that should be done "
+"every X number of days. The system will remind you when it is time! You can "
+"set any task name, description, and interval (every two weeks, etc.). By "
+"clicking the link in the reminder email, you can set the next time it is due."
+"</p>\n"
+"\n"
+"  <h1>What can I use this for?</h1>\n"
+"    <h3>Tasks that should not be forgotten too long <small>like calling your "
+"mom.</small></h3>\n"
+"      <p>If you call her before being reminded, or she calls you, good for "
+"you. The reminder will start counting down from that date, so the reminder "
+"date changes. This works for other tasks like:</p>\n"
+"      <ul>\n"
+"        <li><a href=\"https://www.duplicati.com/\">Backup your computer</a> "
+"and phone once a week</li>\n"
+"        <li>Clean the floors once every two weeks</li>\n"
+"        <li>Write a blog post once a month</li>\n"
+"        <li>Date night every other day</li>\n"
+"        <li>Schedule a meeting for your project every 15 days</li>\n"
+"        <li>Call your mom more!</li>\n"
+"      </ul>\n"
+"\n"
+"      <h3>Tasks that need to happen on a specific day <small>like on "
+"Wednesdays, the weekend, or the 1st of the month</small></h3>\n"
+"      <p>No matter when you acknowledge the reminder, the system will keep "
+"to the initial schedule. Example:</p>\n"
+"      <ul>\n"
+"        <li>Make slides before the class every Thursday</li>\n"
+"        <li>Team meeting before the end of the month</li>\n"
+"        <li>Food coop shift on the third weekend of the month</li>\n"
+"        <li>New X-Files episodes every Wednesday</li>\n"
+"        <li>Play the <a href=\"http://nuclearthrone.com/\">Nuclear Throne</"
+"a> weeklies on weekends</li>\n"
+"      </ul>\n"
+"\n"
+"  "
+msgstr ""
+"\n"
+"\n"
+"<h1> K čemu je tento web? </h1>\n"
+"  <p> Lidé k organizaci úkolů používají například seznamy, nástěnky (Trello "
+"nebo white!) nebo trackery chyb. Jiní mají tendenci zacházet se svou "
+"doručenou poštou  jako s frontou úloh nebo seznamem úkolů. Žádný z těchto "
+"systémů však není určen pro úkoly, které se musí opakovat. </p>\n"
+"  <p> Někdy nevíme, kdy by byl vhodný čas na znovuprovedení některého z "
+"úkolů. Je otravné  úkol neustále odkládat v kalendáři a pokud minete  "
+"oznámení, existuje riziko, že nám to už nikdy nepřipomene. </p>\n"
+"  <p> Po přihlášení pomocí e-mailu můžete nastavit úkoly, které by se měly "
+"provádět každých X dní. Systém vám připomene, když je ten správný čas! "
+"Můžete nastavit libovolný název úkolu, popis a interval (každé dva týdny "
+"atd.). Kliknutím na odkaz v e-mailu s připomenutím můžete nastavit další "
+"termín. </p>\n"
+"\n"
+"  <h1> K čemu to mohu použít? </h1>\n"
+"    <h3> Úkoly, na které byste neměli příliš dlouho zapomínat <small> jako "
+"zavolat matce. </small> </h3>\n"
+"      <p> Pokud jí zavoláte před připomenutím, nebo ona zavolá vám, je to "
+"pro vás dobré. Připomenutí se začne odpočítávat od tohoto data, takže se "
+"datum připomenutí změní. To funguje u dalších úkolů, jako jsou: </p>\n"
+"      <ul>\n"
+"        <li> <a href=\"https://www.duplicati.com/\"> Zálohujte si počítač </"
+"a> a telefon jednou týdně </li>\n"
+"        <li> Čistěte podlahu jednou za dva týdny </li>\n"
+"        <li> Napište blogový příspěvek jednou za měsíc </li>\n"
+"        <li> Rande v noci každý druhý den </li>\n"
+"        <li> Naplánujte si schůzku pro svůj projekt každých 15 dní </li>\n"
+"        <li> Zavolej své matce znovu! </li>\n"
+"      </ul>\n"
+"\n"
+"      <h3> Úkoly, které je třeba uskutečnit v konkrétní den <small> jako ve "
+"středu, o víkendu nebo 1. v měsíci </small> </h3>\n"
+"      <p> Bez ohledu na to, kdy připomenutí potvrdíte, systém dodrží původní "
+"plán. Příklad: </p>\n"
+"      <ul>\n"
+"        <li> Vytvořte prezentaci před školou každý čtvrtek </li>\n"
+"        <li> Setkání týmu před koncem měsíce </li>\n"
+"        <li> Setkání družstva třetí víkend v měsíci </li>\n"
+"        <li> Nové epizody Akta X každou středu </li>\n"
+"        <li> O víkendech přehrání epizod <a href=\"http://nuclearthrone.com/"
+"\"> Nuclear Throne </a>. </li>\n"
+"      </ul>\n"
+" "
+
+#: templates/call_your_mom/landing.html:37
+msgid "Where do I sign up?"
+msgstr "Kde se zaregistruji?"
+
+#: templates/call_your_mom/landing.html:41
+msgid ""
+"When you submit your email here, we'll send you a link you can use to start "
+"adding tasks:"
+msgstr ""
+"Když zde zadáte svůj e-mail, pošleme vám odkaz, pomocí kterého můžete začít "
+"přidávat úkoly:"
+
+#: templates/call_your_mom/landing.html:43
+#: templates/call_your_mom/login.html:14
+#: templates/call_your_mom/register.html:14
+msgctxt "Submit button for email registration"
+msgid "Go"
+msgstr "Ok"
+
+#: templates/call_your_mom/login.html:7
+msgid "Log in"
+msgstr "Přihlásit"
+
+#: templates/call_your_mom/login.html:11
+#: templates/call_your_mom/register.html:11
+msgid ""
+"Just enter your email, and click the link we'll send you to start adding "
+"tasks:"
+msgstr ""
+"Jednoduše zadejte svůj e-mail a kliknutím na odkaz, který vám pošleme, "
+"můžete začít přidávat úkoly:"
+
+#: templates/call_your_mom/login.html:12
+#: templates/call_your_mom/register.html:12
+msgid "Email Address"
+msgstr "Emailová adresa"
+
+#: templates/call_your_mom/profile.html:8
+#, python-format
+msgid "Settings for <em>%(email)s</em>"
+msgstr "Nastavení <em>%(email)s</em>"
+
+#: templates/call_your_mom/profile.html:11
+msgid "Click here to log out"
+msgstr "Klikněte zde pro odhlášení"
+
+#: templates/call_your_mom/profile.html:16
+msgid "Timezone:"
+msgstr "Časová zóna:"
+
+#: templates/call_your_mom/profile.html:22
+msgctxt "timezone"
+msgid "Change"
+msgstr "Změnit"
+
+#: templates/call_your_mom/profile.html:26
+msgid "Here are your tasks:"
+msgstr "Zde jsou Vaše úkoly:"
+
+#: templates/call_your_mom/profile.html:31
+msgid "Name"
+msgstr "Název"
+
+#: templates/call_your_mom/profile.html:32
+msgid "Type"
+msgstr "Typ"
+
+#: templates/call_your_mom/profile.html:33
+msgid "Created"
+msgstr "Vytvořeno"
+
+#: templates/call_your_mom/profile.html:33
+msgid "Interval"
+msgstr "Interval"
+
+#: templates/call_your_mom/profile.html:34
+msgid "Due"
+msgstr "Termín"
+
+#: templates/call_your_mom/profile.html:43
+#, python-format
+msgid "%(interval)s days"
+msgstr "%(interval)s dnů"
+
+#: templates/call_your_mom/profile.html:46
+msgid "Edit task"
+msgstr "Změnit úkol"
+
+#: templates/call_your_mom/profile.html:47
+msgid "Delete task"
+msgstr "Změnit úkol"
+
+#: templates/call_your_mom/profile.html:52
+msgid "No task yet"
+msgstr "Zatím žádný úkol"
+
+#: templates/call_your_mom/profile.html:56
+msgid "Add a task"
+msgstr "Přidat úkol"
+
+#: templates/call_your_mom/register.html:7
+msgid "Sign up!"
+msgstr "Přihlásit se !"
+
+#: views.py:39 views.py:88
+msgid "Please provide an email address"
+msgstr "Uveďte prosím e-mailovou adresu"
+
+#: views.py:64 views.py:104
+#, python-brace-format
+msgid "Rate-limiting is active. Not sending another email to {0}."
+msgstr "Omezení množství emailů je aktivní. Další e-mail neposílám {0}."
+
+#: views.py:70
+#, python-brace-format
+msgid ""
+"We have sent an email to {0}. Please follow the link inside to start "
+"creating tasks."
+msgstr ""
+"Odeslali jsme e-mail na adresu {0}. Postupujte podle odkazu uvnitř a začněte "
+"vytvářet úkoly."
+
+#: views.py:110
+#, python-brace-format
+msgid ""
+"We have sent an email to {0}, if such an account exist. Please follow the "
+"link inside to log in."
+msgstr ""
+"Pokud takový účet existuje, odeslali jsme e-mail na adresu {0}. Přihlaste se "
+"pomocí odkazu uvnitř."
+
+#: views.py:122
+msgid "You have been logged out."
+msgstr "Byli jste odhlášeni."
+
+#: views.py:166
+msgid "Timezone updated"
+msgstr "Časové pásmo aktualizováno"
+
+#: views.py:191 views.py:287 views.py:308
+msgid "Couldn't find this task!"
+msgstr "Nemohu najít tento úkol !"
+
+#: views.py:203
+msgid "Please give your task a name"
+msgstr "Prosím pojmenujte svůj úkol"
+
+#: views.py:213
+msgid "Please give your task a due date"
+msgstr "Prosím dejte svému úkolu termín"
+
+#: views.py:231
+msgid "Please give your task an interval in days between occurrences"
+msgstr "Dejte svému úkolu interval ve dnech mezi jednotlivými výskyty"
+
+#: views.py:244
+msgid "Task updated"
+msgstr "Úkol aktualizován"
+
+#: views.py:253
+msgid "Task created"
+msgstr "Úkol vytvořen"
+
+#: views.py:291
+msgid "Task deleted"
+msgstr "Úkol smazán"
+
+#: views.py:323
+msgid "Please enter the date you performed the task"
+msgstr "Zadejte datum, kdy jste úkol provedli"
+
+#: views.py:335
+msgid "Please enter the date this task is due next"
+msgstr "Zadejte datum, kdy má být tento úkol příští termín"
