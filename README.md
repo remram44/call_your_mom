@@ -1,7 +1,6 @@
 # Call Your Mom!
 
-[![CircleCI badge](https://img.shields.io/circleci/project/github/remram44/call_your_mom/master.svg)](https://circleci.com/gh/remram44/call_your_mom/tree/master)
-[![Say Thanks!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/remram44)
+[![Build Status](https://github.com/remram44/call_your_mom/workflows/Test/badge.svg)](https://github.com/remram44/call_your_mom/actions)
 
 This is a web application meant to remind you to do some periodic tasks.
 
