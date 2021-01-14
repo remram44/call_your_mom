@@ -1,0 +1,35 @@
+name: Test
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        python:
+        - "3.6"
+        - "3.8"
+        include:
+        - os: macos-latest
+          python: "3.8"
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v1
+      with:
+        python-version: ${{ matrix.python }}
+    - name: Install Poetry
+      run: |
+        curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python - --version 1.0.10
+    - name: Install dependencies
+      run: $HOME/.poetry/bin/poetry install
+    - name: Check style
+      run: $HOME/.poetry/bin/poetry run flake8
+    - name: Test
+      run: |
+        cp website/settings.py.sample website/settings.py
+        $HOME/.poetry/bin/poetry run python manage.py test
