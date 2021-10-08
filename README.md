@@ -32,16 +32,18 @@ That unread message sitting in my inbox will burn my eyes until I take care of i
 
 There are two types of tasks:
 
-* The ones that should not be forgotten too long (like calling your mom. If you call her before being reminded, or she calls you, good for you. The reminder will start counting down from that date, so the reminder date changes). Examples:
-  * Backup your computer and phone
-  * Clean the floors
-  * Write a blog post
-  * Date night
-  * Schedule a meeting for your project
-  * Call your mom!
-* The ones that need to happen on a specific day exactly (like things you only do on weekends, or on Wednesdays, or the first day of the month). No matter when you acknowledge the reminder, the system will keep to the initial schedule. Examples:
-  * Team meeting
-  * Play the Nuclear Throne weekly
+* The ones that should not be forgotten too long (like calling your mom. If you call her before being reminded, or she calls you, good for you. The reminder will start counting down from that date, so the reminder date changes). 
+  * Examples:
+    * Backup your computer and phone
+    * Clean the floors
+    * Write a blog post
+    * Date night
+    * Schedule a meeting for your project
+    * Call your mom!
+* The ones that need to happen on a specific day exactly (like things you only do on weekends, or on Wednesdays, or the first day of the month). No matter when you acknowledge the reminder, the system will keep to the initial schedule. 
+  * Examples:
+    * Team meeting
+    * Play the Nuclear Throne weekly
 
 ## How do I install or deploy this
 
